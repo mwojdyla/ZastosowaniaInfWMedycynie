@@ -9,8 +9,8 @@ Ustalenia:
 	1. Aplikacja webowa
 	2. Funkcjonalności
 	a) Rejestracja oraz Logowanie
-	• Jako pracownik posiadam wszystkie uprawnienia klienta oraz więcej
-	• Jako pracownik apteki mam możliwość potwierdzenia roli "pracownika" 
+	• Jako pracownik posiadam wszystkie uprawnienia klienta oraz więcej	
+	• Jako pracownik apteki mam możliwość potwierdzenia roli "pracownika"
 	• Potwierdzenie roli przez innego pracownika zostaje zweryfikowane (kto, kogo zaakceptował) - Django
 	• Jako klient mam możliwość zarejestrowania się oraz zalogowania
 	b) Jako pracownik (aptekarz)
