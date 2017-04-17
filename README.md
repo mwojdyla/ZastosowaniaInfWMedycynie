@@ -50,3 +50,22 @@ Ustalenia:
 	• Wyszukiwarka leków
 	• Wyszukiwarka zamienników
 
+Ustawienia bazy danych:
+
+1. Zainstalowanie u siebie lokalnie serwera mysql (instrukcja tu: https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/)
+   Kroki: Adding the MySQL APT Repository i Installing MySQL with APT
+    
+2. W terminalu:
+
+        mysql -u root -p
+        CREATE DATABASE pharmacy_db;
+        CREATE USER 'pharmaceutist'@'localhost' IDENTIFIED BY 'pharmacy_pw';
+        GRANT ALL PRIVILEGES ON *.* TO 'pharmaceutist'@'localhost';
+        FLUSH PRIVILEGES;
+        quit
+
+3. sudo apt-get install libmysqlclient-dev
+4. W projekcie:
+
+        python manage.py makemigrations
+        python manage.py migrate
