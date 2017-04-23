@@ -3,16 +3,20 @@
 
     angular.module('app')
         .constant("urlConstants", {
-            EXAMPLE: 'example',
-            EXAMPLE_SECOND: 'example-second'
+            SHOP: 'shop',
+            SHOPING_CART: 'shoping-cart',
+            MEDICINE_DETAILS: 'medicine-details'
         })
         .config(function ($routeProvider, urlConstants, buildUrlProvider) {
             $routeProvider
-                .when(buildUrlProvider.$get().createURLWithSlash(urlConstants.EXAMPLE), {
-                    templateUrl: "static/executionDirectiveFromURL/example.html"
+                .when(buildUrlProvider.$get().createURLWithSlash(urlConstants.SHOP), {
+                    templateUrl: "static/executionDirectiveFromURL/shop.html"
                 })
-                .when(buildUrlProvider.$get().createURLWithSlash(urlConstants.EXAMPLE_SECOND), {
-                    templateUrl: "static/executionDirectiveFromURL/example-second.html"
+                .when(buildUrlProvider.$get().createURLWithSlash(urlConstants.SHOPING_CART), {
+                    templateUrl: "static/executionDirectiveFromURL/shoping-cart.html"
+                })
+                .when(buildUrlProvider.$get().createURLWithSlash(urlConstants.MEDICINE_DETAILS), {
+                    templateUrl: "static/executionDirectiveFromURL/medicine-details.html"
                 });
         });
 
