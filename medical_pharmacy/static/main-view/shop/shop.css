@@ -1,0 +1,169 @@
+.shop-tab {
+    margin-top: 20px;
+}
+
+.shop-tab > .shop-container {
+    border-radius: 0;
+    -webkit-border-top-left-radius: 6px;
+    -webkit-border-top-right-radius: 6px;
+    -moz-border-radius-topleft: 6px;
+    -moz-border-radius-topright: 6px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background-color: #fff;
+    position: absolute;
+    left: 2%;
+    width: 77%;
+    bottom: 0;
+    top: 20px;
+}
+
+.shop-tab > .filters {
+    border-radius: 6px;
+    background-color: #fff;
+    position: absolute;
+    left: 80%;
+    right: 2%;
+    padding-bottom: 20px;
+    top: 20px;
+}
+
+.shop-tab > .filters .form-actions {
+    text-align: center;
+}
+
+.shop-tab .header {
+    position: relative;
+    height: 38px;
+    width: 100%;
+    padding: 0 4px;
+    color: #fff;
+    border-radius: 0;
+    -webkit-border-top-left-radius: 6px;
+    -webkit-border-top-right-radius: 6px;
+    -moz-border-radius-topleft: 6px;
+    -moz-border-radius-topright: 6px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background: #2971a8;
+}
+
+.shop-tab .header .template-title {
+    position: absolute;
+    top: 11px;
+    left: 8px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.shop-tab .content {
+    margin: 0 0 5px 0;
+    width: 100%;
+    border-radius: 0 0 4px 4px;
+    border-top: none;
+    padding: 10px;
+}
+
+.shop-tab .content .fLeft {
+    float: left;
+}
+
+.shop-tab .content .fRight {
+    float: right;
+}
+
+.shop-tab .content .tabs {
+    padding: 8px;
+    border-top: none;
+    width: 100%;
+}
+
+.shop-tab .content .items {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    position: absolute;
+    top: 45px;
+    right: 10px;
+    left: 10px;
+    bottom: 10px;
+    overflow: auto;
+}
+
+.shop-tab .content .items .table-header {
+    color: #f25f43;
+}
+
+.shop-tab .checkbox {
+    min-height: inherit;
+    margin-top: 0;
+}
+
+.shop-tab .fLeft .selected {
+    background-color: #f25f43;
+}
+
+.shop-tab .multi-select {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.shop-tab .medicine-item {
+    background-color: transparent;
+    width: 23%;
+    height: 300px;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+.shop-tab .medicine-item .img-wrapper {
+    height: 150px;
+    width: 100%;
+    position: relative;
+}
+
+.shop-tab .medicine-item .img-wrapper > img {
+    width: auto;
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.shop-tab .medicine-item .price {
+    color: #e91c28;
+    font-size: 16px;
+}
+
+.shop-tab .medicine-item button {
+    display: inline-block;
+    margin: 10px 0px 0px 0px;
+    padding: 8px 15px;
+    text-decoration: none;
+    font-size: 14px;
+    border: none;
+    font-family: 'Source Sans Pro', Arial, Tahoma, sans-serif;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    position: relative;
+    zoom: 1;
+    cursor: pointer;
+}
+
+button.add-to-cart {
+    background-color: #e91c28;
+    color: #fff;
+}
+
+button.hurt{
+    background-color: #4bb9bc;
+    color: #fff;
+}
