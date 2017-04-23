@@ -133,29 +133,6 @@
                    ng-model="newUser.phoneNumber"/>
         </div>
 
-        <div class="form-group">
-            <label>Płeć</label>
-            <input aria-label="a" type="hidden" name="sex" id="sex" value="{[{newUser.sex}]}" />
-            <div class="checkbox">
-                <label>
-                    <input aria-label="a" type="checkbox"
-                           ng-model="newUser.sex"
-                           ng-checked="sex === 'm'"
-                           ng-true-value="'m'">
-                    Mężczyzna
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input aria-label="a" type="checkbox"
-                           ng-model="newUser.sex"
-                           ng-checked="sex === 'f'"
-                           ng-true-value="'f'">
-                    Kobieta
-                </label>
-            </div>
-        </div>
-
         <div class="form-group"
              ng-class="{ 'has-error': registerForm.bitrhDate.$dirty && registerForm.bitrhDate.$error.required }">
             <label for="birthDate">Data urodzenia*</label>

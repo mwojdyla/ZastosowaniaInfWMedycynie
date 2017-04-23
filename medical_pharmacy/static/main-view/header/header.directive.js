@@ -15,7 +15,7 @@
                 $scope.rightTabs = headerTabsService.rightTabs;
                 $scope.isActiveItem = isActiveItem;
                 $scope.changeTab = changeTab;
-                const MAIN_URL = $scope.rightTabs.EXAMPLE.route;
+                const MAIN_URL = $scope.leftTabs.SHOP.route;
                 var activePage = null;
                 var activeParent = null;
 
