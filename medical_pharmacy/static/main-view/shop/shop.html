@@ -1,2 +1,155 @@
-/SHOP
-asdASD ASKDAKSDASD
+<div class="container shop-tab">
+    <div class="filters">
+        <div class="header">
+            <span class="text template-title">Filtry</span>
+        </div>
+        <div class="content">
+            <div class="form-group">
+                <input aria-label="a" type="text"
+                       name="medicineName"
+                       placeholder="Nazwa Leku"
+                       id="medicineName"
+                       class="form-control"
+                       ng-model="search.medicineName"/>
+            </div>
+            <div class="form-group">
+                <input aria-label="a" type="text"
+                       name="producentName"
+                       placeholder="Producent"
+                       id="producentName"
+                       class="form-control"
+                       ng-model="search.producentName"/>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"
+                               ng-model="search.prescription">
+                        Na Receptę
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"
+                               ng-model="search.outPrescription">
+                        Bez Recepty
+                    </label>
+                </div>
+            </div>
+            <md-input-container class="multi-select">
+                <label>Składniki</label>
+                <md-select ng-model="search.selectedSubstances" multiple>
+                    <md-option ng-value="'1'">qwerty</md-option>
+                    <md-option ng-value="'2'">asdasdasdasd</md-option>
+                    <md-option ng-value="'3'">dsdfxzcv</md-option>
+                    <md-option ng-value="'4'">asdasd</md-option>
+                    <md-option ng-value="'5'">asasdad2</md-option>
+                    <md-option ng-value="'6'">asaasdase2d3</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container class="multi-select">
+                <label>Forma Leku</label>
+                <md-select ng-model="search.formSelected" multiple>
+                    <md-option ng-value="'1'">qwerty</md-option>
+                    <md-option ng-value="'2'">asdasdasdasd</md-option>
+                    <md-option ng-value="'3'">dsdfxzcv</md-option>
+                    <md-option ng-value="'4'">asdasd</md-option>
+                    <md-option ng-value="'5'">asasdad2</md-option>
+                    <md-option ng-value="'6'">asaasdase2d3</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container class="multi-select">
+                <label>Zastosowanie Leku</label>
+                <md-select ng-model="search.useSelected" multiple>
+                    <md-option ng-value="'1'">qwerty</md-option>
+                    <md-option ng-value="'2'">asdasdasdasd</md-option>
+                    <md-option ng-value="'3'">dsdfxzcv</md-option>
+                    <md-option ng-value="'4'">asdasd</md-option>
+                    <md-option ng-value="'5'">asasdad2</md-option>
+                    <md-option ng-value="'6'">asaasdase2d3</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container class="multi-select">
+                <label>Aplikacja Leku</label>
+                <md-select ng-model="search.applicationSelected" multiple>
+                    <md-option ng-value="'1'">qwerty</md-option>
+                    <md-option ng-value="'2'">asdasdasdasd</md-option>
+                    <md-option ng-value="'3'">dsdfxzcv</md-option>
+                    <md-option ng-value="'4'">asdasd</md-option>
+                    <md-option ng-value="'5'">asasdad2</md-option>
+                    <md-option ng-value="'6'">asaasdase2d3</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <div class="form-actions">
+            <button type="submit"
+                    class="btn btn-success">
+                Szukaj
+            </button>
+        </div>
+    </div>
+    <div class="shop-container">
+        <div class="header">
+            <span class="text template-title">Wyszukane Leki</span>
+        </div>
+        <div class="content">
+            <div class="items">
+                <div class="medicine-item">
+                    <div class="img-wrapper">
+                        <img src="static/images/example.jpg">
+                    </div>
+                    <div class="info">
+                        <h4>Paracetamol 250 mg czopki przeciwgorączkowe, 10 sztuk</h4>
+                        <div class="price">12,40 PLN</div>
+                    </div>
+                    <button class="add-to-cart">Koszyk</button>
+                    <button class="hurt">Hurtownia</button>
+                </div>
+                <div class="medicine-item">
+                    <div class="img-wrapper">
+                        <img src="static/images/example2.jpg">
+                    </div>
+                    <div class="info">
+                        <h4>Paracetamol 250 mg czopki przeciwgorączkowe, 10 sztuk</h4>
+                        <div class="price">12,40 PLN</div>
+                    </div>
+                    <button class="add-to-cart">Koszyk</button>
+                    <button class="hurt">Hurtownia</button>
+                </div>
+                <div class="medicine-item">
+                    <div class="img-wrapper">
+                        <img src="static/images/example.jpg">
+                    </div>
+                    <div class="info">
+                        <h4>Paracetamol 250 mg czopki przeciwgorączkowe, 10 sztuk</h4>
+                        <div class="price">12,40 PLN</div>
+                    </div>
+                    <button class="add-to-cart">Koszyk</button>
+                    <button class="hurt">Hurtownia</button>
+                </div>
+                <div class="medicine-item">
+                    <div class="img-wrapper">
+                        <img src="static/images/example.jpg">
+                    </div>
+                    <div class="info">
+                        <h4>Paracetamol 250 mg czopki przeciwgorączkowe, 10 sztuk</h4>
+                        <div class="price">12,40 PLN</div>
+                    </div>
+                    <button class="add-to-cart">Koszyk</button>
+                    <button class="hurt">Hurtownia</button>
+                </div>
+                <div class="medicine-item">
+                    <div class="img-wrapper">
+                        <img src="static/images/example.jpg">
+                    </div>
+                    <div class="info">
+                        <h4>Paracetamol 250 mg czopki przeciwgorączkowe, 10 sztuk</h4>
+                        <div class="price">12,40 PLN</div>
+                    </div>
+                    <button class="add-to-cart">Koszyk</button>
+                    <button class="hurt">Hurtownia</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
