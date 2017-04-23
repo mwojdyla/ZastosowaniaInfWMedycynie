@@ -1,0 +1,34 @@
+{% load staticfiles %}
+
+<html ng-app="appAuthorization" ng-controller="authorizationController">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'lib/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/css/angular-material.min.css' %}" rel="stylesheet">
+    <link href="{% static 'authorization/app-authorisation.css' %}" rel="stylesheet">
+</head>
+<body>
+<div class="background"></div>
+{% block bodyContent %}
+{% endblock %}
+
+<!-- LIBS -->
+<script src="{% static 'lib/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'lib/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'lib/js/angular.min.js' %}"></script>
+<script src="{% static 'lib/js/angular-route.min.js' %}"></script>
+<script src="{% static 'lib/js/angular-strap.min.js' %}"></script>
+<script src="{% static 'lib/js/angular-strap.tpl.min.js' %}"></script>
+<script src="{% static 'lib/js/angular-animate.min.js' %}"></script>
+<script src="{% static 'lib/js/angular-aria.min.js' %}"></script>
+<script src="{% static 'lib/js/angular-messages.min.js' %}"></script>
+<script src="{% static 'lib/js/angular-material.min.js' %}"></script>
+<script src="{% static 'lib/js/angular-sanitize.min.js' %}"></script>
+
+<!-- MODULE APP -->
+<script src="{% static 'authorization/appAuthorization.js' %}"></script>
+<script src="{% static 'authorization/authorization.controller.js' %}"></script>
+
+<!-- SERVICES -->
+</body>
+</html>
