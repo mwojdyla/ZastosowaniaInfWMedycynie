@@ -12,6 +12,12 @@
                 dropdown: false,
                 route: buildUrl.createURLWithSlash(urlConstants.SHOPING_CART)
             },
+            AUTHENTICATE: {
+                name: 'authenticate',
+                title: 'Zarejestruj / Zaloguj',
+                dropdown: false,
+                route: buildUrl.createURLWithSlash(urlConstants.AUTHENTICATE)
+            },
             PROFIL: {
                 name: 'Profil',
                 title: 'Profil',
