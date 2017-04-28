@@ -10,8 +10,8 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 
-def titlePage(request):
-    TEMPLATE_PATH = 'main/user-authorization/titlePage.html'
+def authentication_page(request):
+    TEMPLATE_PATH = 'main/user-authorization/authentication_page.html'
 
     context = {}
     template = loader.get_template(TEMPLATE_PATH)

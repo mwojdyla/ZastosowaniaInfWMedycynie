@@ -1,0 +1,18 @@
+<div class="container cart-tab">
+    <div class="cart-container">
+        <div class="header">
+            <div class="cart-step">
+                <ul class="clear">
+                    <li ng-class="{'active': isProducts()}">Rzeczy w koszyku</li>
+                    <li ng-class="{'active': isDelivery()}">Dostawa</li>
+                    <li>Podsumowanie</li>
+                    <li>Potwierdzenie</li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <products ng-if="isProducts()"></products>
+            <delivery ng-if="isDelivery()"></delivery>
+        </div>
+    </div>
+</div>

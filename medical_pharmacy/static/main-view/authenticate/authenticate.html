@@ -1,0 +1,195 @@
+<div class="authenticate">
+    <div class="col-md-4 col-md-offset-1 login-form" ng-cloak>
+        <h2>Masz konto? Zaloguj się</h2>
+        <form name="loginForm" role="form">
+            <div class="form-group"
+                 ng-class="{ 'has-error': loginForm.email.$dirty && (loginForm.email.$error.required || loginForm.$error.email)}">
+                <input aria-label="a" type="email"
+                       name="email"
+                       id="loginEmail"
+                       placeholder="Email*"
+                       class="form-control"
+                       ng-model="user.email"
+                       ng-minlength="4"
+                       required/>
+                <span ng-show="loginForm.email.$dirty && (loginForm.email.$error.required || loginForm.$error.email)"
+                      class="help-block">
+                Niepoprawny format adresu Email
+            </span>
+            </div>
+
+            <div class="form-group"
+                 ng-class="{ 'has-error': loginForm.password.$dirty && (loginForm.password.$error.required || loginForm.password.$error.minlength) }">
+                <label for="password">Password</label>
+                <input aria-label="a" type="password"
+                       name="password"
+                       id="loginPassword"
+                       ng-minlength="6"
+                       placeholder="Hasło*"
+                       class="form-control"
+                       ng-model="user.password"
+                       required/>
+                <span ng-show="loginForm.password.$dirty && loginForm.password.$error.required"
+                      class="help-block">
+                Hasło jest wymagane
+            </span>
+                <span ng-show="loginForm.password.$dirty && loginForm.password.$error.minlength"
+                      class="help-block">
+                Hasło za krótkie
+            </span>
+            </div>
+
+            <div class="form-actions">
+                <button
+                        type="submit"
+                        ng-disabled="loginForm.$invalid"
+                        class="btn btn-primary">
+                    Zaloguj
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-5 col-md-offset-1 register-form" ng-cloak>
+        <h2>Nie masz konta? Zarejestruj się</h2>
+        <form name="registerForm" role="form">
+            <div class="form-group"
+                 ng-class="{ 'has-error': registerForm.firstName.$dirty && registerForm.firstName.$error.required }">
+                <input aria-label="a" type="text"
+                       name="firstName"
+                       id="firstName"
+                       class="form-control"
+                       ng-model="newUser.firstName"
+                       placeholder="Imię*"
+                       required/>
+                <span ng-show="registerForm.firstName.$dirty && registerForm.firstName.$error.required"
+                      class="help-block">
+                Imię jest wymagane
+            </span>
+            </div>
+
+            <div class="form-group"
+                 ng-class="{ 'has-error': registerForm.lastName.$dirty && registerForm.lastName.$error.required }">
+                <input aria-label="a" type="text"
+                       name="lastName"
+                       placeholder="Nazwisko*"
+                       id="lastName"
+                       class="form-control"
+                       ng-model="newUser.lastName"
+                       required/>
+                <span ng-show="registerForm.lastName.$dirty && registerForm.lastName.$error.required"
+                      class="help-block">
+                Nazwisko jest wymagane
+            </span>
+            </div>
+
+            <div class="form-group"
+                 ng-class="{ 'has-error': registerForm.email.$dirty && (registerForm.email.$error.required || registerForm.$error.email) }">
+                <input aria-label="a" type="email"
+                       name="email"
+                       placeholder="Email*"
+                       id="email"
+                       class="form-control"
+                       ng-model="newUser.email"
+                       required/>
+                <span ng-show="registerForm.email.$dirty && (registerForm.email.$error.required || registerForm.$error.email)"
+                      class="help-block">
+                Niepoprawny format adresu Email
+            </span>
+            </div>
+
+            <div class="form-group">
+                 <input aria-label="a"
+                       name="zip_code"
+                       placeholder="Kod pocztowy*"
+                       id="zip_code"
+                       class="form-control"
+                       ng-model="newUser.zip_code"
+                       required/>
+            </div>
+            <div class="form-group">
+                 <input aria-label="a"
+                       name="locality"
+                       placeholder="Miejscowość*"
+                       id="locality"
+                       class="form-control"
+                       ng-model="newUser.locality"
+                       required/>
+            </div>
+            <div class="form-group">
+                 <input aria-label="a"
+                       name="address"
+                       placeholder="Adres*"
+                       id="address"
+                       class="form-control"
+                       ng-model="newUser.address"
+                       required/>
+            </div>
+
+            <div class="form-group">
+                <input aria-label="a" type="phoneNumber"
+                       placeholder="Numer telefonu"
+                       name="phoneNumber"
+                       id="phoneNumber"
+                       class="form-control"
+                       ng-model="newUser.phoneNumber"/>
+            </div>
+
+            <div class="form-group"
+                 ng-class="{ 'has-error': registerForm.bitrhDate.$dirty && registerForm.bitrhDate.$error.required }">
+                <label for="birthDate">Data urodzenia*</label>
+                <input aria-label="a" type="hidden" name="birthDate" id="birthDate" value="{[{newUser.birthDate}]}"/>
+                <md-datepicker ng-model="newUser.birthDate"
+                               md-placeholder="MM/DD/RRRR"
+                               required></md-datepicker>
+                <span ng-show="registerForm.bitrhDate.$dirty && registerForm.bitrhDate.$error.required"
+                      class="help-block">
+                Data urodzenia jest wymagana
+            </span>
+            </div>
+
+            <div class="form-group"
+                 ng-class="{ 'has-error': registerForm.password.$dirty && (registerForm.password.$error.required || registerForm.password.$error.minlength) }">
+                <input aria-label="a" type="password"
+                       placeholder="Hasło*"
+                       name="password"
+                       id="password"
+                       class="form-control"
+                       ng-model="newUser.password"
+                       ng-minlength="6"
+                       required/>
+                <span ng-show="registerForm.password.$dirty && registerForm.password.$error.required"
+                      class="help-block">
+                Hasło jest wymagane
+            </span>
+                <span ng-show="registerForm.password.$dirty && registerForm.password.$error.minlength"
+                      class="help-block">
+                Hasło za krótkie
+            </span>
+            </div>
+
+            <div class="form-group"
+                 ng-class="{ 'has-error': newUser.password !== newUser.confirmationPassword }">
+                <input aria-label="a" type="password"
+                       placeholder="Potwierdź hasło*"
+                       name="confirmationPassword"
+                       id="confirmationPassword"
+                       class="form-control"
+                       ng-model="newUser.confirmationPassword"
+                       ng-minlength="6"
+                       required/>
+                <span ng-show="newUser.password !== newUser.confirmationPassword"
+                      class="help-block">
+                Hasła muszą być takie same
+            </span>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit"
+                        ng-disabled="registerForm.$invalid || newUser.password !== newUser.confirmationPassword"
+                        class="btn btn-success">
+                    Zarejestruj
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
