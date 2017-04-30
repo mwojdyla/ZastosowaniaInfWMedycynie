@@ -3,10 +3,11 @@
         <div class="header">
             <div class="cart-step">
                 <ul class="clear">
-                    <li ng-class="{'active': isProducts()}">Rzeczy w koszyku</li>
-                    <li ng-class="{'active': isDelivery()}">Dostawa</li>
-                    <li>Podsumowanie</li>
-                    <li>Potwierdzenie</li>
+                    <li ng-repeat="(key, tab) in tabs"
+                        ng-class="{'active': isTabActive(tab)}"
+                        ng-click="changeTab(tab)">
+                        {[{tab.title}]}
+                    </li>
                 </ul>
             </div>
         </div>

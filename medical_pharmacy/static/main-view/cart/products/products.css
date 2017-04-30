@@ -1,0 +1,38 @@
+.cart-tab .products .item .medicine-name {
+    color: #2971a8;
+}
+
+.cart-tab .content .products .table th {
+    text-align: center;
+    width: 15%;
+}
+
+.cart-tab .content .products .table thead tr th:nth-child(1) {
+    width: 45%;
+}
+
+.cart-tab .content .products .table thead tr th:nth-child(2) {
+    width: 5%;
+}
+
+.cart-tab .content .products .table thead tr th:last-child {
+    width: 5%;
+}
+
+.cart-tab .content .products .table .align-right {
+    text-align: right;
+}
+
+.cart-tab .products .cart-sum {
+    background-color: #fafafa;
+    color: #2971a8;
+}
+
+.cart-tab .products .cart-button {
+    background-color: #e91c28;
+    color: #fff;
+}
+
+.cart-tab .products .center {
+    text-align: center;
+}
