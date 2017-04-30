@@ -8,9 +8,15 @@
         const RIGHT_TABS = {
             CART: {
                 name: 'cart',
-                title: 'Shoping Cart',
+                title: 'Koszyk',
                 dropdown: false,
                 route: buildUrl.createURLWithSlash(urlConstants.SHOPING_CART)
+            },
+            AUTHENTICATE: {
+                name: 'authenticate',
+                title: 'Zarejestruj / Zaloguj',
+                dropdown: false,
+                route: buildUrl.createURLWithSlash(urlConstants.AUTHENTICATE)
             },
             PROFIL: {
                 name: 'Profil',
@@ -23,15 +29,15 @@
                     },
                     {
                         id: 1,
-                        title: 'Edit profil'
+                        title: 'Edytuj Profil'
                     },
                     {
                         id: 2,
-                        title: 'Change Password'
+                        title: 'Zmień Hasło'
                     },
                     {
                         id: 3,
-                        title: 'Logout'
+                        title: 'Wyloguj'
                     }
                 ]
             }
@@ -40,13 +46,13 @@
         const LEFT_TABS = {
             SHOP: {
                 name: 'shop',
-                title: 'Shop',
+                title: 'Sklep',
                 dropdown: false,
                 route: buildUrl.createURLWithSlash(urlConstants.SHOP)
             },
             DETAILS: {
                 name: 'medicine-details',
-                title: 'Medicine Details',
+                title: 'Szczegóły leku',
                 dropdown: false,
                 route: buildUrl.createURLWithSlash(urlConstants.MEDICINE_DETAILS)
             }
