@@ -1,8 +1,16 @@
 (function () {
     'use strict';
     function Controller($scope) {
-      $scope.name = "Super lek";
-      $scope.price = "100";
+      $scope.medicine = {
+        name: "Super lek",
+        imagePath: "http://naukawpolsce.pap.pl/Data/Thumbs/_plugins/information/396527/MTAyNHg3Njg,14305581_14305647.jpg",
+        price: "100",
+        applications: ["Alergia", "Ból dupy"],
+        producent: "Ziomeczek",
+        form: "Spray",
+        amount: "500"
+      };
+
     }
 
     angular.module('app')

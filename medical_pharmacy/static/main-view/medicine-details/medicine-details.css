@@ -70,7 +70,7 @@
 
 .medicine-tab .content .medicine .photo img {
   border-radius: 5px;
-border: 1px solid #c8c8c9;
+  border: 1px solid #c8c8c9;
 }
 
 .medicine-tab .content .medicine .base-info {
@@ -79,4 +79,28 @@ border: 1px solid #c8c8c9;
   width: 300px;
   margin: 10px;
   display: inline-block;
+}
+
+.base-info div {
+  border-bottom: 1px solid #4bb9bc;
+  margin: 10px 5px;
+}
+
+.info-row .info {
+  color: #4bb9bc;
+  float: right;
+  width: 50%;
+  margin-right: 15px;
+}
+
+.base-info .price .info-type,
+.base-info .info-row .info-type {
+  width: 50%;
+}
+
+.base-info .price .info {
+  color: red;
+  float: right;
+  width: 50%;
+  margin-right: 15px;
 }
