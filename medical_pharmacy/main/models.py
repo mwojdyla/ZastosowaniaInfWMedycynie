@@ -37,8 +37,12 @@ class User(models.Model):
     isPharmacist = models.BooleanField(default=False,
                                        help_text='')
     grantor = models.ForeignKey('self',
+                                blank=True,
+                                null=True,
                                 help_text='Describes who gave rights for user.')
-    givingRightsDate = models.DateField(help_text='Describes when rights were given')
+    givingRightsDate = models.DateField(blank=True,
+                                        null=True,
+                                        help_text='Describes when rights were given')
 
 
 class Substance(models.Model):
@@ -47,29 +51,39 @@ class Substance(models.Model):
 
 class MedicineForm(models.Model):
     TYPE_CHOICES = (
-        ('PI', 'pill'),
-        ('OI', 'ointment'),
-        ('IN', 'injection'),
-        ('AE', 'aerosol'),
-        ('CO', 'core')
+        ('PILL', 'pill'),
+        ('OINTMENT', 'ointment'),
+        ('INJECTION', 'injection'),
+        ('AEROSOL', 'aerosol'),
+        ('CORE', 'core')
     )
-    form = models.CharField(max_length=10,
+    form = models.CharField(max_length=2,
                             choices=TYPE_CHOICES,
                             help_text='')
 
 
 class MedicineApplication(models.Model):
     APPLICATION_CHOICES = (
-        ('Null', 'Null'),
-        ('Null2', 'Null2'),
+        ('HEAD', 'Headache'),
+        ('STOMACH', 'Stomachache'),
+        ('ANTI_PRESSURE', 'AntiPressure'),
+        ('ALLERGY', 'allergy'),
     )
-    application = models.CharField(max_length=10,
+    application = models.CharField(max_length=15,
                                    choices=APPLICATION_CHOICES,
                                    help_text='')
 
 
 class MedicineUse(models.Model):
-    description = models.TextField(help_text='')
+    USAGE_CHOICES = (
+        ('ORAL', 'oral'),
+        ('INJECTION', 'injection'),
+        ('RECTAL', 'rectal'),
+        ('INHALED', 'inhaled'),
+        ('TRANSDERMAL', 'transdermal')
+    )
+    usage = models.TextField(help_text='')
+
 
 class Medicine(models.Model):
     name = models.CharField(max_length=64,
@@ -87,11 +101,11 @@ class Medicine(models.Model):
                                  help_text='')
     price = models.FloatField(help_text='')
     quantityInWarehouse = models.IntegerField(help_text='')
-    amount = models.IntegerField(help_text='')
+    quantityInPackage = models.IntegerField(help_text='')
     form = models.ForeignKey(MedicineForm,
                              help_text='')
-    application = models.ForeignKey(MedicineApplication,
-                                    help_text='')
+    application = models.ManyToManyField(MedicineApplication,
+                                         help_text='')
     use = models.ForeignKey(MedicineUse,
                             help_text='')
 
@@ -101,7 +115,8 @@ class Order(models.Model):
                             auto_now_add=True)
     purchaser = models.ForeignKey(User,
                                   help_text='')
-
+    address = models.TextField(max_length=256,
+                               help_text='')
 
 
 
