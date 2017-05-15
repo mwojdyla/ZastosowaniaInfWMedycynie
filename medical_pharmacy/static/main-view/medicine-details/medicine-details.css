@@ -63,7 +63,7 @@
 .medicine-tab .content .medicine .photo {
   float: left;
   height: 400px;
-  width: 300px;
+  width: 350px;
   margin: 10px;
   display: inline-block;
 }
@@ -71,14 +71,24 @@
 .medicine-tab .content .medicine .photo img {
   border-radius: 5px;
   border: 1px solid #c8c8c9;
+  margin-left: 10px;
 }
 
 .medicine-tab .content .medicine .base-info {
   float: left;
   height: 400px;
-  width: 300px;
+  width: 350px;
   margin: 10px;
   display: inline-block;
+}
+
+.medicine-tab .content .medicine .more-info {
+  float: left;
+  height: 400px;
+  width: 350px;
+  margin: 10px;
+  display: inline-block;
+  background-color: red;
 }
 
 .base-info div {
