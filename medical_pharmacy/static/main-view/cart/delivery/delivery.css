@@ -1,0 +1,160 @@
+.cart-tab .delivery .clear:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.cart-tab .delivery section.box .box_content {
+    border: solid 1px #f5f5f5;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.cart-tab .delivery section.box > header {
+    background: none #4bb9bc;
+    color: #fff;
+    text-shadow: 0px -1px 0px #4bb9bc;
+    -moz-border-radius: 3px 3px 0px 0px;
+    -webkit-border-radius: 3px 3px 0px 0px;
+    border-radius: 3px 3px 0px 0px;
+    position: relative;
+}
+
+.cart-tab .delivery section.box > header h1,
+.cart-tab .delivery section.box > header h2,
+.cart-tab .delivery section.box > header h3,
+.cart-tab .delivery section.box > header h4,
+.cart-tab .delivery section.box > header h5,
+.cart-tab .delivery section.box > header h6 {
+    padding: 10px 20px;
+    font-family: 'Source Sans Pro', Arial, Tahoma, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.cart-tab .delivery section.box.no-frame .box_content {
+    border: 0;
+    padding: 0px;
+}
+
+.cart-tab .delivery .select_boxes .delivery_group {
+    float: left;
+    width: 50%;
+}
+
+.cart-tab .delivery .select_boxes .delivery_group > .ins {
+    margin-left: 10px;
+    margin-top: 10px;
+    background-color: #f1f1f1;
+    padding: 10px 10px 1px 10px;
+}
+
+.cart-tab .delivery .select_boxes .delivery_group > .ins h4 {
+    font-weight: normal;
+    text-align: center;
+    margin: 10px 0px 20px 0px;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.cart-tab .delivery .select_boxes.with_groups {
+    margin-left: -10px;
+}
+
+.cart-tab .delivery .select_boxes.no_groups {
+    background-color: #f1f1f1;
+    padding: 10px 10px 1px 10px;
+    margin: 0;
+}
+
+.cart-tab .delivery .select_boxes.no_groups .box_item {
+    float: left;
+    width: 25%;
+}
+
+.cart-tab .delivery .select_boxes.no_groups .box_item .ins {
+    padding-left: 10px;
+}
+
+.cart-tab .delivery .select_boxes .box_item {
+    display: block;
+    background-color: #fff;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.cart-tab .delivery .select_boxes .box_item .name {
+    display: block;
+    font-size: 17px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.cart-tab .delivery .select_boxes .box_item .input {
+    display: none;
+}
+
+.cart-tab .delivery .select_boxes .box_item .radio {
+    border-radius: 100px;
+    display: inline-block;
+    border: solid 2px #ccc;
+    padding: 3px;
+    float: left;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.cart-tab .delivery .select_boxes .box_item .radio span {
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+}
+
+.cart-tab .delivery .select_boxes .box_item .info {
+    margin: 0px 0px 0px 60px;
+    padding: 20px 40px 20px 0px;
+}
+
+.cart-tab .delivery .select_boxes .box_item .info .price {
+    text-align: right;
+    font-size: 17px;
+}
+
+.cart-tab .delivery .select_boxes .box_item.active {
+    background-color: #2971a8;
+    color: #fff;
+}
+
+.cart-tab .delivery .select_boxes .box_item.active .name {
+    color: #fff;
+}
+
+.cart-tab .delivery .select_boxes .box_item.active .radio {
+    background-color: #fff;
+    border-color: #2971a8;
+}
+
+.cart-tab .delivery .select_boxes .box_item.active .radio span {
+    background-color: #2971a8;
+}
+
+.cart-tab .delivery .select_boxes .box_item:hover {
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cart-tab .delivery .select_boxes .box_item:hover .radio {
+    border-color: #aaa;
+}
+
+.cart-tab .delivery .assume-button {
+    width: 100%;
+    background-color: #2971a8;
+    color: white;
+    height: 50px;
+    border-radius: 5px;
+}

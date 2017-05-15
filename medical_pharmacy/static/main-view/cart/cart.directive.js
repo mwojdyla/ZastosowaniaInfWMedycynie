@@ -7,20 +7,17 @@
                 restrict: 'E',
                 scope: {},
                 templateUrl: 'static/main-view/cart/cart.html',
-                controller: ['$scope', Controller]
+                controller: ['$scope', 'cartTabsService', Controller]
             };
 
-            function Controller($scope) {
-                $scope.isDelivery = isDelivery;
-                $scope.isProducts = isProducts;
-
-                function isProducts() {
-                    return true;
-                }
-
-                function isDelivery() {
-                    return false;
-                }
+            function Controller($scope, cartTabsService) {
+                $scope.tabs = cartTabsService.tabs;
+                $scope.isDelivery = cartTabsService.isDelivery;
+                $scope.isProducts = cartTabsService.isProducts;
+                $scope.isAssume = cartTabsService.isAssume;
+                $scope.isConfirmation = cartTabsService.isConfirmation;
+                $scope.isTabActive = cartTabsService.isTabActive;
+                $scope.changeTab = cartTabsService.changeTab;
             }
         });
 
