@@ -28,10 +28,34 @@
                   <span class="info">{{medicine.form}}</span>
                 </div>
                 <div class="info-row">
-                  <span class="info-type">Pojemność: </span><span class="info">{{medicine.amount}} ml</span>
+                  <span class="info-type">Pojemność: </span>
+                  <span class="info">{{medicine.quantityInPackage.amount + " " + medicine.quantityInPackage.kind}}</span>
                 </div>
               </div>
               <div class="more-info">
+                <div class="info-row">
+                  <span class="info-type">Składniki: </span>
+                  <span class="info">
+                    <span ng-repeat="ingredient in medicine.composition">
+                      {{ ingredient }}{{$last ? '' : ', '}}
+                    </span>
+                  </span>
+                </div>
+                <div class="info-row">
+                  <span class="info-type">Zamienniki: </span>
+                  <span class="info">
+                    <span ng-click="showSubstitute(substitute.id)"
+                          ng-repeat="substitute in medicine.substitutes">
+                      {{ substitute.name }}{{$last ? '' : ', '}}
+                    </span>
+                  </span>
+                </div>
+                <div class="info-row">
+                  <span class="info-type">Sposób użycia: </span>
+                  <span class="info">
+                    {{medicine.use}}
+                  </span>
+                </div>
               </div>
             </div>
         </div>

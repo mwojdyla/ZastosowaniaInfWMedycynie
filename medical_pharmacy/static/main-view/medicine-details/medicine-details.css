@@ -86,12 +86,12 @@
   float: left;
   height: 400px;
   width: 350px;
-  margin: 10px;
+  margin: 30px 10px 10px 20px;
   display: inline-block;
-  background-color: red;
 }
 
-.base-info div {
+.base-info div,
+.more-info div {
   border-bottom: 1px solid #4bb9bc;
   margin: 10px 5px;
 }
