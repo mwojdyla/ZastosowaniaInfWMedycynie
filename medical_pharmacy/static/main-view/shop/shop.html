@@ -69,17 +69,14 @@
                     <md-option ng-value="'6'">asaasdase2d3</md-option>
                 </md-select>
             </md-input-container>
-            <md-input-container class="multi-select">
-                <label>Aplikacja Leku</label>
-                <md-select ng-model="search.applicationSelected" multiple>
-                    <md-option ng-value="'1'">qwerty</md-option>
-                    <md-option ng-value="'2'">asdasdasdasd</md-option>
-                    <md-option ng-value="'3'">dsdfxzcv</md-option>
-                    <md-option ng-value="'4'">asdasd</md-option>
-                    <md-option ng-value="'5'">asasdad2</md-option>
-                    <md-option ng-value="'6'">asaasdase2d3</md-option>
-                </md-select>
-            </md-input-container>
+            <md-slider-container>
+                <span>Cena</span>
+                <md-slider flex min="0" max="300" ng-model="search.price" aria-label="red" id="red-slider">
+                </md-slider>
+                <md-input-container>
+                    <input flex type="number" ng-model="search.price" aria-label="red" aria-controls="red-slider">
+                </md-input-container>
+            </md-slider-container>
         </div>
         <div class="form-actions">
             <button type="submit"
@@ -103,7 +100,6 @@
                         <div class="price">12,40 PLN</div>
                     </div>
                     <button class="add-to-cart">Koszyk</button>
-                    <button class="hurt">Hurtownia</button>
                 </div>
                 <div class="medicine-item">
                     <div class="img-wrapper">
@@ -114,7 +110,6 @@
                         <div class="price">12,40 PLN</div>
                     </div>
                     <button class="add-to-cart">Koszyk</button>
-                    <button class="hurt">Hurtownia</button>
                 </div>
                 <div class="medicine-item">
                     <div class="img-wrapper">
@@ -125,7 +120,6 @@
                         <div class="price">12,40 PLN</div>
                     </div>
                     <button class="add-to-cart">Koszyk</button>
-                    <button class="hurt">Hurtownia</button>
                 </div>
                 <div class="medicine-item">
                     <div class="img-wrapper">
@@ -136,7 +130,6 @@
                         <div class="price">12,40 PLN</div>
                     </div>
                     <button class="add-to-cart">Koszyk</button>
-                    <button class="hurt">Hurtownia</button>
                 </div>
                 <div class="medicine-item">
                     <div class="img-wrapper">
@@ -147,7 +140,6 @@
                         <div class="price">12,40 PLN</div>
                     </div>
                     <button class="add-to-cart">Koszyk</button>
-                    <button class="hurt">Hurtownia</button>
                 </div>
             </div>
         </div>

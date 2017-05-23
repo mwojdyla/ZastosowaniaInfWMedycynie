@@ -18,7 +18,7 @@
     top: 20px;
 }
 
-.cart-tab .header {
+.cart-tab > .cart-container > .header {
     position: relative;
     height: 40px;
     width: 100%;
@@ -58,7 +58,7 @@
     float: left;
     display: inline-block;
     display: table-cell;
-    width: 25%;
+    width: 33.33%;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;

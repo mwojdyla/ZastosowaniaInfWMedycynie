@@ -22,11 +22,6 @@
                 title: 'Podsumowanie',
                 active: false
 
-            },
-            CONFIRMATION: {
-                id: 3,
-                title: 'Potwierdzenie',
-                active: false
             }
         };
         var selectedTab = tabs.PRODUCTS;
@@ -38,7 +33,6 @@
             isTabActive: isTabActive,
             isProducts: isProducts,
             isDelivery: isDelivery,
-            isAssume: isAssume,
             isConfirmation: isConfirmation
         };
 
@@ -62,10 +56,6 @@
 
         function isDelivery() {
             return tabs.DELIVERY.active;
-        }
-
-        function isAssume() {
-            return tabs.ASSUME.active;
         }
 
         function isConfirmation() {

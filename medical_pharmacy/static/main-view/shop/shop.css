@@ -167,3 +167,11 @@ button.hurt{
     background-color: #4bb9bc;
     color: #fff;
 }
+
+.filters md-slider-container md-input-container input[type=number] {
+    padding-left: 0;
+}
+
+.filters md-slider{
+    min-width: 110px;
+}

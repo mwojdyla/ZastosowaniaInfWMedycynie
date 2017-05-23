@@ -158,3 +158,13 @@
     height: 50px;
     border-radius: 5px;
 }
+
+.cart-tab .delivery .customer-form .header{
+        background-color: #F5F5F5;
+    height: 40px;
+    font-size: 16px;
+    margin-top: 10px;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+}
