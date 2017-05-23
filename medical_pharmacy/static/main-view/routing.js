@@ -19,7 +19,7 @@
                 .when(buildUrlProvider.$get().createURLWithSlash(urlConstants.AUTHENTICATE), {
                     templateUrl: "static/executionDirectiveFromURL/authenticate.html"
                 })
-                .when(buildUrlProvider.$get().createURLWithSlash(urlConstants.MEDICINE_DETAILS), {
+                .when(buildUrlProvider.$get().createURLWithSlash(urlConstants.MEDICINE_DETAILS, ':id'), {
                     templateUrl: "static/executionDirectiveFromURL/medicine-details.html"
                 });
         });
