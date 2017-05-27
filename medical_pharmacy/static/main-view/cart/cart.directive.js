@@ -15,7 +15,6 @@
                 $scope.isDelivery = cartTabsService.isDelivery;
                 $scope.isProducts = cartTabsService.isProducts;
                 $scope.isAssume = cartTabsService.isAssume;
-                $scope.isConfirmation = cartTabsService.isConfirmation;
                 $scope.isTabActive = cartTabsService.isTabActive;
                 $scope.changeTab = cartTabsService.changeTab;
             }

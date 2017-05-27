@@ -3,6 +3,9 @@
 
     angular.module('app')
         .constant("urlConstants", {
+            ADMIN_PREFIX: 'admin',
+            ADD_RIGHTS: 'add-rights',
+            ADD_MEDICINE: 'add-medicine',
             SHOP: 'shop',
             SHOPING_CART: 'shoping-cart',
             AUTHENTICATE: 'authenticate',
@@ -21,6 +24,12 @@
                 })
                 .when(buildUrlProvider.$get().createURLWithSlash(urlConstants.MEDICINE_DETAILS, ':id'), {
                     templateUrl: "static/executionDirectiveFromURL/medicine-details.html"
+                })
+                .when(buildUrlProvider.$get().createURLWithSlash(urlConstants.ADMIN_PREFIX, urlConstants.ADD_RIGHTS), {
+                    templateUrl: "static/executionDirectiveFromURL/add-rights.html"
+                })
+                .when(buildUrlProvider.$get().createURLWithSlash(urlConstants.ADMIN_PREFIX, urlConstants.ADD_MEDICINE), {
+                    templateUrl: "static/executionDirectiveFromURL/add-medicine.html"
                 });
         });
 
