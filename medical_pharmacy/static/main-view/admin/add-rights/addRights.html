@@ -1,0 +1,44 @@
+<div class="container rights-tab">
+    <div class="rights-container">
+        <div class="header">
+            <span class="text template-title">Użytkownicy</span>
+        </div>
+        <div class="content">
+            <div class="head-content">
+                <div class="form-group col-sm-4">
+                    <input type="text" class="form-control" placeholder="Szukaj osoby">
+                </div>
+                <div class="col-sm-1 col-sm-offset-6">
+                    <button class="btn btn-success">Zatwiedź zmiany</button>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Lp.</th>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
+                    <th>Email</th>
+                    <th>Administrator</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="warning">
+                    <td>1</td>
+                    <td>Sławomir</td>
+                    <td>Żaba</td>
+                    <td>slawekzaba@poczta.fm</td>
+                    <td>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"
+                                       ng-model="allSelected.value">
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

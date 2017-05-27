@@ -34,7 +34,7 @@
     background: #2971a8;
 }
 
-.cart-tab .content {
+.cart-tab > .content {
     top: 40px;
     bottom: 5px;
     position: absolute;

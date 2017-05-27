@@ -55,6 +55,23 @@
                 title: 'Szczegóły leku',
                 dropdown: false,
                 route: buildUrl.createURLWithSlash(urlConstants.MEDICINE_DETAILS)
+            },
+            ADMIN: {
+                name: 'admin',
+                title: 'Panel administratora',
+                dropdown: true,
+                items: [
+                    {
+                        id: 0,
+                        title: 'Dodaj lek',
+                        route: buildUrl.createURLWithSlash(urlConstants.ADMIN_PREFIX, urlConstants.ADD_MEDICINE)
+                    },
+                    {
+                        id: 1,
+                        title: 'Dodaj prawa użytkownikowi',
+                        route: buildUrl.createURLWithSlash(urlConstants.ADMIN_PREFIX, urlConstants.ADD_RIGHTS)
+                    }
+                ]
             }
         };
 

@@ -33,7 +33,7 @@
             isTabActive: isTabActive,
             isProducts: isProducts,
             isDelivery: isDelivery,
-            isConfirmation: isConfirmation
+            isAssume: isAssume
         };
 
         function isTabActive(tab) {
@@ -58,8 +58,8 @@
             return tabs.DELIVERY.active;
         }
 
-        function isConfirmation() {
-            return tabs.CONFIRMATION.active;
+        function isAssume() {
+            return tabs.ASSUME.active;
         }
     }
 })();

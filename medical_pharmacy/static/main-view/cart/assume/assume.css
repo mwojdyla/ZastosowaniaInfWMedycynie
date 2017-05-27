@@ -1,0 +1,53 @@
+.cart-tab .assume .item .medicine-name {
+    color: #2971a8;
+}
+
+.cart-tab .content .assume .table th {
+    text-align: center;
+    width: 15%;
+}
+
+.cart-tab .content .assume .table thead tr th:nth-child(1) {
+    width: 45%;
+}
+
+.cart-tab .content .assume .table thead tr th:nth-child(2) {
+    width: 5%;
+}
+
+.cart-tab .content .assume .table thead tr th:last-child {
+    width: 10%;
+}
+
+.cart-tab .content .assume .table .align-right {
+    text-align: right;
+}
+
+.cart-tab .assume .cart-sum {
+    background-color: #fafafa;
+    color: #2971a8;
+}
+
+.cart-tab .assume .cart-button {
+    background-color: #e91c28;
+    color: #fff;
+    margin-top:20px;
+}
+
+.cart-tab .assume .center {
+    text-align: center;
+}
+
+.cart-tab .assume .data-person .header {
+    font-weight: bold;
+    color: #4bb9bc;
+    padding: 20px 20px 20px 80px;
+    font-size: 16px;
+    background-color: beige;
+}
+
+.cart-tab .assume .data-person .content {
+    padding: 20px;
+    background-color: #eee;
+    min-height:110px;
+}
