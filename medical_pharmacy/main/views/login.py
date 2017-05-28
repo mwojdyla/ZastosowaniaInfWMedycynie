@@ -1,10 +1,9 @@
 import json
 
 from django.contrib.auth import authenticate, login
-from django.http import HttpResponse
-from django.shortcuts import redirect
-from django.template import loader
+from django.http import JsonResponse
 from django.views.generic.base import TemplateView
+from api.serializers import UserSerializer
 
 REGISTER_TEMPLATE_PATH = 'main/user-authorization/authentication_page.html'
 
@@ -16,8 +15,7 @@ class Login(TemplateView):
 
         if user is not None:
             login(request, user)
-            return redirect('/', user=user)
+            return JsonResponse({'email': user.email})
         else:
             context = {'error': 'loginError'}
-            template = loader.get_template(REGISTER_TEMPLATE_PATH)
-            return HttpResponse(template.render(context, request))
+            return JsonResponse(context, status=500)

@@ -7,10 +7,13 @@
                 restrict: 'E',
                 scope: {},
                 templateUrl: 'static/main-view/header/header.html',
-                controller: ['$scope', '$location', 'headerTabsService', Controller]
+                controller: ['$scope', '$location', 'headerTabsService', 'eventsService', 'typeEvents', Controller]
             };
 
-            function Controller($scope, $location, headerTabsService) {
+            function Controller($scope, $location, headerTabsService, eventsService, typeEvents) {
+                eventsService.subscribe($scope, typeEvents.DISABLE_AUTHENTICATION, function(){
+                    alert('DSABLE!!');
+                });
                 $scope.leftTabs = headerTabsService.leftTabs;
                 $scope.rightTabs = headerTabsService.rightTabs;
                 $scope.isActiveItem = isActiveItem;
