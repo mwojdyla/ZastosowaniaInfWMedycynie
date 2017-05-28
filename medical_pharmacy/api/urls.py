@@ -18,7 +18,7 @@ urlpatterns = [
     url('^medicines/', MedicineView.MedicineListCreate.as_view()),
     url('^medicine_forms/', MedicineFormView.MedicineFormListCreate.as_view()),
     url('^medicine_applications/', MedicineApplicationView.MedicineApplicationListCreate.as_view()),
-    url('^medicine_uses/', MedicineUseView.MedicineUseListCreate.as_view()),
+    # url('^medicine_uses/', MedicineUseView.MedicineUseListCreate.as_view()),
     url('^orders/', OrderView.OrderListCreate.as_view()),
 
     #Retrieve, Update & Destroy views
@@ -27,6 +27,6 @@ urlpatterns = [
     url('^medicines/(?P<pk>[0-9]+)/$', MedicineView.MedicineUpdateDelete.as_view()),
     url('^medicine_forms/(?P<pk>[0-9]+)/$', MedicineFormView.MedicineFormUpdateDelete.as_view()),
     url('^medicine_applications/(?P<pk>[0-9]+)/$', MedicineApplicationView.MedicineApplicationUpdateDelete.as_view()),
-    url('^medicine_uses/(?P<pk>[0-9]+)/$', MedicineUseView.MedicineUseUpdateDelete.as_view()),
+    # url('^medicine_uses/(?P<pk>[0-9]+)/$', MedicineUseView.MedicineUseUpdateDelete.as_view()),
     url('^orders/(?P<pk>[0-9]+)/$', OrderView.OrderUpdateDelete.as_view()),
 ]

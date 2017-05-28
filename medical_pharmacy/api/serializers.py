@@ -34,12 +34,6 @@ class MedicineApplicationSerializer(serializers.ModelSerializer):
         fields = ('id', 'application')
 
 
-class MedicineUseSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = MedicineUse
-        fields = ('id', 'usage')
-
-
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
