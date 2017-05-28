@@ -50,7 +50,7 @@ class Register(TemplateView):
                     last_login=datetime.now()
                 )
                 login(request, customUser)
-                return JsonResponse({'email':customUser.email})
+                return JsonResponse({'email':user.email, 'id': customUser.id}) # YOU SHOULD RETURN WHOLE USER BY SERIALISER
 
             else:
                 error_message = 'Invalid login details supplied. Please try again'

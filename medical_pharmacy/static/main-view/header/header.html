@@ -48,7 +48,7 @@
                     role="menu">
                     <li ng-repeat-start="item in tab.items"
                         ng-class="{'active' : isActiveItem(item, tabKey)}">
-                        <a ng-if="!item.route && !item.href"> {[{item.title}]} </a>
+                        <a ng-if="!item.route && !item.href" ng-click="logoutUser(item)"> {[{item.title}]} </a>
                         <a ng-if="item.route" ng-click="changeTab(item)"> {[{item.title}]} </a>
                         <a ng-if="item.href" ng-href="{[{item.href}]}"> {[{item.title}]} </a>
                     </li>

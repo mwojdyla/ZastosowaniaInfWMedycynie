@@ -2,9 +2,9 @@
 
 {% block bodyContent %}
 
-<header></header>
+<header ng-if="isAppReady()"></header>
 <div class="background"></div>
-<div class="main-view">
+<div class="main-view" ng-if="isAppReady()">
     <div class="main-view-container view-animate" ng-view></div>
 </div>
 

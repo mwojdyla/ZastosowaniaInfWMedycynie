@@ -15,7 +15,7 @@ class Login(TemplateView):
 
         if user is not None:
             login(request, user)
-            return JsonResponse({'email': user.email})
+            return JsonResponse({'email': user.email, 'id' : user.id}) # YOU SHOULD RETURN WHOLE USER BY SERIALISER
         else:
             context = {'error': 'loginError'}
             return JsonResponse(context, status=500)

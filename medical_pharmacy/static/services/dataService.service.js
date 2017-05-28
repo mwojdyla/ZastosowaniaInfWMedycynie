@@ -5,6 +5,7 @@ function dataService($q, $http) {
     const baseApi = "";
     const REGISTER_URL = '/register';
     const LOGIN_URL = '/login';
+    const LOGOUT_URL = '/logout';
     const USERS_URL = '/api/users';
 
     return {
@@ -15,20 +16,36 @@ function dataService($q, $http) {
         getMedicineDetail: getMedicineDetail,
         register: register,
         login: login,
+        logout: logout,
         getUserById: getUserById
     };
 
-    function getUserById(id) {
+    function getUserById(id, callback) {
+        callback({
+            id: 1,
+            email: 'slawekzaba@poczta.fm'
+        });
+        /*$http({
+         method: 'GET',
+         url: USERS_URL,
+         params: {
+         id: id
+         }
+         }).then(function successCallback(response) {
+         callback(response.data);
+         }, function errorCallback(response) {
+         console.error('REGISTER ERROR')
+         });*/
+    }
+
+    function logout(callback) {
         $http({
-            method: 'GET',
-            url: USERS_URL,
-            params: {
-                id: id
-            }
-        }).then(function successCallback(response) {
-            callback(response.data);
-        }, function errorCallback(response) {
-            console.error('REGISTER ERROR')
+            method: 'POST',
+            url: LOGOUT_URL
+        }).then(function successCallback() {
+            callback();
+        }, function errorCallback() {
+
         });
     }
 

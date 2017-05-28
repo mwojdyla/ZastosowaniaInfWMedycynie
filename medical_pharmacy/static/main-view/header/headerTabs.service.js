@@ -28,18 +28,12 @@
                 items: [
                     {
                         id: 0,
+                        name: 'email',
                         title: 'email'
                     },
                     {
                         id: 1,
-                        title: 'Edytuj Profil'
-                    },
-                    {
-                        id: 2,
-                        title: 'Zmień Hasło'
-                    },
-                    {
-                        id: 3,
+                        name: 'logout',
                         title: 'Wyloguj'
                     }
                 ]
