@@ -90,8 +90,8 @@ class PackageQuantity(models.Model):
 class Medicine(models.Model):
     name = models.CharField(max_length=64,
                             help_text='Name of the medicine.')
-    producent = models.CharField(max_length=64,
-                                 help_text='')
+    producer = models.CharField(max_length=64,
+                                help_text='')
     validityPeriod = models.DateField(help_text='The term of validity of mentioned medicine.')
     withPrescription = models.BooleanField(default=False,
                                            help_text='')
