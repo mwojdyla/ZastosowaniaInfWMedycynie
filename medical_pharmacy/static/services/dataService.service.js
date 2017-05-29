@@ -21,21 +21,17 @@ function dataService($q, $http) {
     };
 
     function getUserById(id, callback) {
-        callback({
-            id: 1,
-            email: 'slawekzaba@poczta.fm'
+        $http({
+            method: 'GET',
+            url: USERS_URL,
+            params: {
+                id: id
+            }
+        }).then(function successCallback(response) {
+            callback(response.data);
+        }, function errorCallback(response) {
+            console.error('REGISTER ERROR')
         });
-        /*$http({
-         method: 'GET',
-         url: USERS_URL,
-         params: {
-         id: id
-         }
-         }).then(function successCallback(response) {
-         callback(response.data);
-         }, function errorCallback(response) {
-         console.error('REGISTER ERROR')
-         });*/
     }
 
     function logout(callback) {
@@ -57,7 +53,7 @@ function dataService($q, $http) {
         }).then(function successCallback(response) {
             callback(response.data);
         }, function errorCallback(response) {
-            console.error('REGISTER ERROR')
+            errorMessage('Błąd rejestracji. Spróbuj ponownie');
         });
     }
 
@@ -69,7 +65,7 @@ function dataService($q, $http) {
         }).then(function successCallback(response) {
             callback(response.data);
         }, function errorCallback(response) {
-            console.error('LOGIN ERROR')
+            errorMessage('Błąd logowania. Spróbuj ponownie');
         });
     }
 
@@ -102,5 +98,12 @@ function dataService($q, $http) {
             }, function errorCallback() {
 
             });
+    }
+
+    function errorMessage(message) {
+        $.notify(message, {
+            position: "top center",
+            className: "error"
+        });
     }
 }
