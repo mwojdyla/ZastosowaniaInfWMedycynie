@@ -5,15 +5,16 @@ from main.models import *
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'firstName', 'lastName', 'email', 'phoneNumber', 'birthDate', 'isPharmacist', 'grantor',
-                  'givingRightsDate')
+        fields = ('id', 'firstName', 'lastName', 'email', 'zipCode', 'locality', 'address', 'phoneNumber',
+                  'birthDate', 'isPharmacist', 'grantor', 'givingRightsDate')
 
 
 class MedicineSerializer(serializers.ModelSerializer):
     class Meta:
         model = Medicine
-        fields = ('id', 'name', 'producent', 'validityPeriod', 'withPrescription', 'composition', 'substitutes',
+        fields = ('id', 'name', 'producer', 'validityPeriod', 'withPrescription', 'composition', 'substitutes',
                   'imagePath', 'price', 'quantityInWarehouse', 'quantityInPackage', 'form', 'application', 'use')
+        depth = 2
 
 
 class SubstanceSerializer(serializers.ModelSerializer):
@@ -37,4 +38,4 @@ class MedicineApplicationSerializer(serializers.ModelSerializer):
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
-        fields = ('id', 'date', 'purchaser', 'address')
+        fields = ('id', 'date', 'purchaser', 'address', 'medicines')

@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
 from .views import views
 from .views.register import Register

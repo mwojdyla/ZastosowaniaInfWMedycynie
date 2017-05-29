@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from django.core.validators import RegexValidator, EmailValidator
 from django.db import models
 
@@ -24,8 +24,11 @@ class Validator(object):
     )
 
 
-class CustomUser(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+class User(models.Model):
+    firstName = models.CharField(max_length=64)
+    lastName = models.CharField(max_length=64)
+    email = models.EmailField(unique=True,
+                              validators=[Validator.emailValidator])
     zipCode = models.CharField(max_length=6,
                                validators=[Validator.zip_code_validator],
                                help_text='Zip code as complement to the address.')
@@ -39,6 +42,8 @@ class CustomUser(models.Model):
                                    validators=[Validator.phoneValidator],
                                    help_text='Phone number of the company.')
     birthDate = models.DateField(help_text='Birth date of the user.')
+    password = models.CharField(max_length=128,
+                                help_text='User\'s password to application in encoded form.')
     isPharmacist = models.BooleanField(default=False)
     grantor = models.ForeignKey('self',
                                 blank=True,
@@ -50,6 +55,13 @@ class CustomUser(models.Model):
     last_login = models.DateTimeField(null=True,
                                       blank=True,
                                       help_text='Date of last login to the application.')
+
+    @staticmethod
+    def is_authenticated():
+        return True
+
+    def __str__(self):
+        return 'Owner: {first_name} {last_name}'.format(first_name=self.first_name, last_name=self.last_name)
 
 
 class Substance(models.Model):
