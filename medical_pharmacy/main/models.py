@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+# from django.contrib.auth.models import User
 from django.core.validators import RegexValidator, EmailValidator
 from django.db import models
 
@@ -16,16 +17,25 @@ class Validator(object):
         message='Wprowadz prawidlowy adres email',
         code='Nieprawidlowy adres email'
     )
+    zip_code_validator = RegexValidator(
+        regex=r'^\d{2}-\d{3}$',
+        message='Kod pocztowy musi byc w odpowiednim formacie: 99-999.',
+        code='Nieprawidlowy kod pocztowy.'
+    )
 
 
 class User(models.Model):
-    firstName = models.CharField(max_length=64,
-                                 help_text='First name of the user.')
-    lastName = models.CharField(max_length=64,
-                                help_text='Last name of the user.')
+    firstName = models.CharField(max_length=64)
+    lastName = models.CharField(max_length=64)
     email = models.EmailField(unique=True,
-                              validators=[Validator.emailValidator],
-                              help_text='User\'s email address.')
+                              validators=[Validator.emailValidator])
+    zipCode = models.CharField(max_length=6,
+                               validators=[Validator.zip_code_validator],
+                               help_text='Zip code as complement to the address.')
+    locality = models.CharField(max_length=64,
+                                help_text='Indicates the user\'s place of residence.')
+    address = models.TextField(max_length=256,
+                               help_text='Exact user\'s address.')
     phoneNumber = models.CharField(max_length=15,
                                    null=True,
                                    blank=True,
@@ -33,9 +43,8 @@ class User(models.Model):
                                    help_text='Phone number of the company.')
     birthDate = models.DateField(help_text='Birth date of the user.')
     password = models.CharField(max_length=128,
-                                help_text='User\'s password to account in encoded form.')
-    isPharmacist = models.BooleanField(default=False,
-                                       help_text='')
+                                help_text='User\'s password to application in encoded form.')
+    isPharmacist = models.BooleanField(default=False)
     grantor = models.ForeignKey('self',
                                 blank=True,
                                 null=True,
@@ -43,11 +52,22 @@ class User(models.Model):
     givingRightsDate = models.DateField(blank=True,
                                         null=True,
                                         help_text='Describes when rights were given')
+    last_login = models.DateTimeField(null=True,
+                                      blank=True,
+                                      help_text='Date of last login to the application.')
+
+    @staticmethod
+    def is_authenticated():
+        return True
+
+    def __str__(self):
+        return 'Owner: {first_name} {last_name}'.format(first_name=self.first_name, last_name=self.last_name)
 
 
 class Substance(models.Model):
     name = models.CharField(max_length=128,
                             help_text='')
+
 
 class MedicineForm(models.Model):
     TYPE_CHOICES = (
@@ -74,22 +94,16 @@ class MedicineApplication(models.Model):
                                    help_text='')
 
 
-class MedicineUse(models.Model):
-    USAGE_CHOICES = (
-        ('ORAL', 'oral'),
-        ('INJECTION', 'injection'),
-        ('RECTAL', 'rectal'),
-        ('INHALED', 'inhaled'),
-        ('TRANSDERMAL', 'transdermal')
-    )
-    usage = models.TextField(help_text='')
+class PackageQuantity(models.Model):
+    amount = models.IntegerField(help_text='')
+    kind = models.CharField(max_length=32)
 
 
 class Medicine(models.Model):
     name = models.CharField(max_length=64,
                             help_text='Name of the medicine.')
-    producent = models.CharField(max_length=64,
-                                 help_text='')
+    producer = models.CharField(max_length=64,
+                                help_text='')
     validityPeriod = models.DateField(help_text='The term of validity of mentioned medicine.')
     withPrescription = models.BooleanField(default=False,
                                            help_text='')
@@ -101,13 +115,13 @@ class Medicine(models.Model):
                                  help_text='')
     price = models.FloatField(help_text='')
     quantityInWarehouse = models.IntegerField(help_text='')
-    quantityInPackage = models.IntegerField(help_text='')
+    quantityInPackage = models.ForeignKey(PackageQuantity)
     form = models.ForeignKey(MedicineForm,
                              help_text='')
     application = models.ManyToManyField(MedicineApplication,
                                          help_text='')
-    use = models.ForeignKey(MedicineUse,
-                            help_text='')
+    use = models.TextField(max_length=264,
+                           help_text='')
 
 
 class Order(models.Model):
@@ -117,6 +131,8 @@ class Order(models.Model):
                                   help_text='')
     address = models.TextField(max_length=256,
                                help_text='')
+    medicines = models.ManyToManyField(Medicine,
+                                       help_text='')
 
 
 

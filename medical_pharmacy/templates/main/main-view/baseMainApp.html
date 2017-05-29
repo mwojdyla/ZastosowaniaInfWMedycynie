@@ -1,6 +1,6 @@
 {% load staticfiles %}
 
-<html ng-app="app">
+<html ng-app="app" ng-controller="mainController" ng-init="initController('{{user_id}}')">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -45,10 +45,12 @@
 <script src="{% static 'lib/js/angular-bootstrap-colorpicker.js' %}"></script>
 <script src="{% static 'lib/js/angular-bootstrap-calendar.js' %}"></script>
 <script src="{% static 'lib/js/pl.js' %}"></script> <!-- locale to moment.js -->
+<script src="{% static 'lib/js/notify.min.js' %}"></script>
 
 <!-- MODULE APP -->
 <script src="{% static 'main-view/app.js' %}"></script>
 <script src="{% static 'main-view/routing.js' %}"></script>
+<script src="{% static 'main-view/main.controller.js' %}"></script>
 
 <!-- DIRECTIVES -->
 <script src="{% static 'main-view/header/header.directive.js' %}"></script>
@@ -67,5 +69,9 @@
 <script src="{% static 'main-view/buildUrl.service.js' %}"></script>
 <script src="{% static 'main-view/cart/cart-tabs.service.js' %}"></script>
 <script src="{% static 'services/dataService.service.js' %}"></script>
+<script src="{% static 'services/utils.service.js' %}"></script>
+<script src="{% static 'services/events.service.js' %}"></script>
+<script src="{% static 'services/typeEvents.constant.js' %}"></script>
+<script src="{% static 'services/commonInformations.service.js' %}"></script>
 </body>
 </html>
