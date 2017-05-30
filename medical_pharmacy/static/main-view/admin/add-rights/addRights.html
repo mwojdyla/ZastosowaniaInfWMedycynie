@@ -6,10 +6,10 @@
         <div class="content">
             <div class="head-content">
                 <div class="form-group col-sm-4">
-                    <input type="text" class="form-control" placeholder="Szukaj osoby">
+                    <input type="search" ng-model="wantedUser" class="form-control" placeholder="Szukaj osoby">
                 </div>
                 <div class="col-sm-1 col-sm-offset-6">
-                    <button class="btn btn-success">Zatwiedź zmiany</button>
+                    <button class="btn btn-success" ng-click="updatePermissions()">Zatwiedź zmiany</button>
                 </div>
             </div>
             <table class="table">
@@ -23,16 +23,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr class="warning">
-                    <td>1</td>
-                    <td>Sławomir</td>
-                    <td>Żaba</td>
-                    <td>slawekzaba@poczta.fm</td>
+                <tr ng-repeat="user in users | filter: filterUser" class="warning">
+                    <td>{{$index + 1}}</td>
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.email}}</td>
                     <td>
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox"
-                                       ng-model="allSelected.value">
+                                       ng-model="user.isPharmacist"
+                                       ng-change="changeUserPermissions(user.id)">
                             </label>
                         </div>
                     </td>
