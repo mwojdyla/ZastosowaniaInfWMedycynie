@@ -17,8 +17,28 @@ function dataService($q, $http) {
         register: register,
         login: login,
         logout: logout,
-        getUserById: getUserById
+        getUserById: getUserById,
+        getAllUsers: getAllUsers,
+        updateUsersPermissions: updateUsersPermissions
     };
+
+    function updateUsersPermissions(payload) {
+      return $http.post(baseApi + "/api/users/updateUsersPermissions", payload).then(
+          function successCallback() {
+            successMessage("Prawa użytkowników zostały zmienione.");
+          }, function errorCallback() {
+              console.error('updateUsersPermissions ERROR');
+          });
+    }
+
+    function getAllUsers(callback) {
+      return $http.get(baseApi + USERS_URL).then(
+          function successCallback(response) {
+            callback(response.data);
+          }, function errorCallback() {
+              console.error('GET USERS ERROR');
+          });
+    }
 
     function getUserById(id, callback) {
         $http({
@@ -73,8 +93,8 @@ function dataService($q, $http) {
         return $http.get(baseApi + "/api/medicines/" + id).then(
             function successCallback(response) {
                 callback(response.data);
-            }, function errorCallback() {
-
+            }, function errorCallback(response) {
+                console.error('GET MEDICINE ERROR')
             });
     }
 
@@ -85,7 +105,6 @@ function dataService($q, $http) {
     function getMedicineApplications() {
         return $http.get(baseApi + "/api/medicine_applications/");
     }
-
 
     function getMedicineForms() {
         return $http.get(baseApi + "/api/medicine_forms/");
@@ -104,6 +123,13 @@ function dataService($q, $http) {
         $.notify(message, {
             position: "top center",
             className: "error"
+        });
+    }
+
+    function successMessage(message) {
+        $.notify(message, {
+            position: "top center",
+            className: "success"
         });
     }
 }
