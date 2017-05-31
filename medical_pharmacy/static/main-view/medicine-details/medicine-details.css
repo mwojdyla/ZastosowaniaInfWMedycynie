@@ -53,6 +53,7 @@
     top: 45px;
     border-radius: 10px;
     right: 20px;
+    padding-top: 10px;
     left: 20px;
     bottom: 10px;
     border: 1px solid #c8c8c9;
@@ -61,56 +62,86 @@
 }
 
 .medicine-tab .content .medicine .photo {
-  float: left;
-  height: 400px;
-  width: 350px;
-  margin: 10px;
-  display: inline-block;
+    float: left;
+    display: inline-block;
 }
 
 .medicine-tab .content .medicine .photo img {
-  border-radius: 5px;
-  border: 1px solid #c8c8c9;
-  margin-left: 10px;
+    border-radius: 5px;
+    border: 1px solid #c8c8c9;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .medicine-tab .content .medicine .base-info {
-  float: left;
-  height: 400px;
-  width: 350px;
-  margin: 10px;
-  display: inline-block;
+    float: left;
+    display: inline-block;
 }
 
 .medicine-tab .content .medicine .more-info {
-  float: left;
-  height: 400px;
-  width: 350px;
-  margin: 30px 10px 10px 20px;
-  display: inline-block;
+    float: left;
+    display: inline-block;
 }
 
 .base-info div,
 .more-info div {
-  border-bottom: 1px solid #4bb9bc;
-  margin: 10px 5px;
+    border-bottom: 1px solid #4bb9bc;
 }
 
 .info-row .info {
-  color: #4bb9bc;
-  float: right;
-  width: 50%;
-  margin-right: 15px;
+    color: #4bb9bc;
+    float: right;
+    width: 50%;
 }
 
 .base-info .price .info-type,
 .base-info .info-row .info-type {
-  width: 50%;
+    width: 50%;
 }
 
 .base-info .price .info {
-  color: red;
-  float: right;
-  width: 50%;
-  margin-right: 15px;
+    color: red;
+    float: right;
+    width: 50%;
+}
+
+.medicine-tab button {
+    display: inline-block;
+    margin: 10px 0px 0px 0px;
+    padding: 8px 15px;
+    text-decoration: none;
+    font-size: 14px;
+    border: none;
+    font-family: 'Source Sans Pro', Arial, Tahoma, sans-serif;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    position: relative;
+    zoom: 1;
+    cursor: pointer;
+}
+
+.medicine-tab .footer {
+    position: absolute;
+    text-align: center;
+    color: black;
+}
+
+.medicine-tab .order {
+    background-color: beige;
+    margin-top: 10px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.medicine-tab .order .form-group{
+    width:33%;
+    display:inline-block;
+}
+
+.info-container {
+    display: inline-block;
 }

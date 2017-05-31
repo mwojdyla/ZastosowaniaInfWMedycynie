@@ -162,12 +162,6 @@ button.add-to-cart {
     background-color: #e91c28;
     color: #fff;
 }
-
-button.hurt{
-    background-color: #4bb9bc;
-    color: #fff;
-}
-
 .filters md-slider-container md-input-container input[type=number] {
     padding-left: 0;
 }
