@@ -1,54 +1,62 @@
 <div class="addMedicine">
     <div class="form-medicine col-sm-10 col-sm-offset-1">
-        <md-input-container class="col-sm-6">
+        <md-input-container class="col-sm-5"
+                            ng-class="{'error-input': !isValid('name', medicine.name)}">
             <label>Nazwa</label>
-            <input ng-model="user.email" type="email">
+            <input ng-model="medicine.name">
         </md-input-container>
-        <md-input-container class="col-sm-6">
+        <md-input-container class="col-sm-5 col-sm-offset-2"
+                            ng-class="{'error-input': !isValid('producer', medicine.producer)}">
             <label>Producent</label>
-            <input ng-model="user.email" type="email">
+            <input ng-model="medicine.producer">
         </md-input-container>
-
-        <md-input-container class="col-sm-4">
+        <md-input-container class="col-sm-3"
+                            ng-class="{'error-input': !isValid('price', medicine.price)}">
             <label>Cena</label>
-            <input ng-model="user.email" type="email">
+            <input ng-model="medicine.price">
         </md-input-container>
-        <md-input-container class="col-sm-4">
+        <md-input-container class="col-sm-3 col-sm-offset-1"
+                            ng-class="{'error-input': !isValid('quantityInPackage', medicine.quantityInPackage)}">
             <label>Ilość w opakowaniu</label>
-            <input ng-model="user.email" type="email">
+            <input ng-model="medicine.quantityInPackage">
         </md-input-container>
-        <md-input-container class="col-sm-4">
+        <md-input-container class="col-sm-3 col-sm-offset-2"
+                            ng-class="{'error-input': !isValid('unit', medicine.unit)}">
             <label>Jednostka</label>
-            <md-select ng-model="search.useSelected">
-                <md-option ng-value="'1'">gr</md-option>
-                <md-option ng-value="'2'">ml</md-option>
+            <md-select ng-model="medicine.unit">
+                <md-option
+                        ng-repeat="unit in unitTypes"
+                        ng-value="unit"
+                        ng-selected="$index === 0">{{unit}}
+                </md-option>
             </md-select>
         </md-input-container>
-        <md-input-container class="col-sm-6">
+        <md-input-container class="col-sm-5"
+                            ng-class="{'error-input': !isValid('imagePath', medicine.imagePath)}">
             <label>Scieżka do obrazka</label>
-            <input ng-model="user.email" type="email">
+            <input ng-model="medicine.imagePath">
         </md-input-container>
-        <md-input-container class="col-sm-6">
+        <md-input-container class="col-sm-5 col-sm-offset-2"
+                            ng-class="{'error-input': !isValid('withPrescription', medicine.withPrescription)}">
             <label>Recepta</label>
-            <md-select ng-model="search.useSelected">
-                <md-option ng-value="'1'">Na receptę</md-option>
-                <md-option ng-value="'2'">Bez recepty</md-option>
+            <md-select ng-model="medicine.withPrescription">
+                <md-option ng-value="true" selected>Na receptę</md-option>
+                <md-option ng-value="false">Bez recepty</md-option>
             </md-select>
         </md-input-container>
-        <md-input-container class="multi-select col-sm-6">
+        <md-input-container class="multi-select col-sm-5"
+                            ng-class="{'error-input': !isValid('composition', medicine.composition)}">
             <label>Składniki</label>
-            <md-select ng-model="search.useSelected" multiple>
-                <md-option ng-value="'1'">qwerty</md-option>
-                <md-option ng-value="'2'">asdasdasdasd</md-option>
-                <md-option ng-value="'3'">dsdfxzcv</md-option>
-                <md-option ng-value="'4'">asdasd</md-option>
-                <md-option ng-value="'5'">asasdad2</md-option>
-                <md-option ng-value="'6'">asaasdase2d3</md-option>
+            <md-select ng-model="medicine.composition" multiple>
+                <md-option ng-repeat="substance in substancesTypes"
+                           ng-value="substance.id">{{substance.name}}
+                </md-option>
             </md-select>
         </md-input-container>
-        <md-input-container class="multi-select col-sm-6">
+        <md-input-container class="multi-select col-sm-5 col-sm-offset-2"
+                            ng-class="{'error-input': !isValid('substitutes', medicine.substitutes)}">
             <label>Zamienniki</label>
-            <md-select ng-model="search.useSelected" multiple>
+            <md-select ng-model="medicine.substitutes" multiple>
                 <md-option ng-value="'1'">qwerty</md-option>
                 <md-option ng-value="'2'">asdasdasdasd</md-option>
                 <md-option ng-value="'3'">dsdfxzcv</md-option>
@@ -58,37 +66,39 @@
             </md-select>
         </md-input-container>
 
-        <md-input-container class="multi-select col-sm-6">
+        <md-input-container class="multi-select col-sm-5"
+                            ng-class="{'error-input': !isValid('application', medicine.application)}">
             <label>Zastosowanie</label>
-            <md-select ng-model="search.useSelected" multiple>
-                <md-option ng-value="'1'">qwerty</md-option>
-                <md-option ng-value="'2'">asdasdasdasd</md-option>
-                <md-option ng-value="'3'">dsdfxzcv</md-option>
-                <md-option ng-value="'4'">asdasd</md-option>
-                <md-option ng-value="'5'">asasdad2</md-option>
-                <md-option ng-value="'6'">asaasdase2d3</md-option>
+            <md-select ng-model="medicine.application" multiple>
+                <md-option ng-repeat="app in applicationTypes" ng-value="app.value">{{app.text}}</md-option>
             </md-select>
         </md-input-container>
-        <md-input-container class="multi-select col-sm-6">
+        <md-input-container class="multi-select col-sm-5 col-sm-offset-2"
+                            ng-class="{'error-input': !isValid('form', medicine.form)}">
             <label>Forma aplikacji</label>
-            <md-select ng-model="search.useSelected" multiple>
-                <md-option ng-value="'1'">qwerty</md-option>
-                <md-option ng-value="'2'">asdasdasdasd</md-option>
-                <md-option ng-value="'3'">dsdfxzcv</md-option>
-                <md-option ng-value="'4'">asdasd</md-option>
-                <md-option ng-value="'5'">asasdad2</md-option>
-                <md-option ng-value="'6'">asaasdase2d3</md-option>
+            <md-select ng-model="medicine.form">
+                <md-option ng-repeat="form in formTypes" ng-value="form.value">{{form.text}}</md-option>
             </md-select>
         </md-input-container>
 
-        <md-input-container class="col-sm-6">
-            <label>Data gwarancji*</label>
+        <md-input-container class="col-sm-12 text-area-input"
+                            ng-class="{'error-input': !isValid('use', medicine.use)}">
+            <label>Opis użycia</label>
+            <textarea ng-model="medicine.use"></textarea>
+        </md-input-container>
+
+        <md-input-container class="col-sm-6"
+                            ng-class="{'error-input': !isValid('validityPeriod', medicine.validityPeriod)}">
+            <label>Data gwarancji</label>
             <md-datepicker ng-model="medicine.validityPeriod"
                            md-placeholder="MM/DD/RRRR"
-                           required></md-datepicker>
+                           md-min-date="minDate"></md-datepicker>
         </md-input-container>
         <md-input-container class="col-sm-12 form-actions">
-            <button class="btn btn-success">Zatwierdź</button>
+            <button class="btn btn-success"
+                    ng-disabled="!isConfirmEnable();"
+                    ng-click="submit()">Zatwierdź
+            </button>
         </md-input-container>
     </div>
 </div>

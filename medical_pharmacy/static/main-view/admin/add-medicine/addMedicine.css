@@ -11,5 +11,15 @@
 
 .addMedicine md-input-container {
     height: 50px;
-    margin: 10px 0;
+    margin-top: 13px;
+    margin-bottom: 13px;
+}
+
+.addMedicine .error-input {
+    border: 1px solid red;
+    border-radius: 5px;
+}
+
+.addMedicine md-input-container.text-area-input {
+    height: auto;
 }

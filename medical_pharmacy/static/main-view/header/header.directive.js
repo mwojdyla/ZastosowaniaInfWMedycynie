@@ -25,7 +25,7 @@
                                 dataService,
                                 eventsService,
                                 typeEvents) {
-                eventsService.subscribe($scope, typeEvents.DISABLE_AUTHENTICATION, disableAuthenticate)
+                eventsService.subscribe($scope, typeEvents.DISABLE_AUTHENTICATION, disableAuthenticate);
 
                 function disableAuthenticate() {
                     $scope.rightTabs.AUTHENTICATE.disable = true;
