@@ -19,8 +19,14 @@ function dataService($q, $http) {
         logout: logout,
         getUserById: getUserById,
         getAllUsers: getAllUsers,
-        updateUsersPermissions: updateUsersPermissions
+        updateUsersPermissions: updateUsersPermissions,
+        addMedicine: addMedicine
     };
+
+    function addMedicine(medicine, callback){
+        alert('TO DO SERWER, DODAWANIE LEKU');
+        callback();
+    }
 
     function updateUsersPermissions(payload) {
       return $http.post(baseApi + "/api/users/updateUsersPermissions", payload).then(
@@ -48,7 +54,7 @@ function dataService($q, $http) {
                 id: id
             }
         }).then(function successCallback(response) {
-            callback(response.data);
+            callback(response.data[0]);
         }, function errorCallback(response) {
             console.error('REGISTER ERROR')
         });
@@ -110,10 +116,10 @@ function dataService($q, $http) {
         return $http.get(baseApi + "/api/medicine_forms/");
     }
 
-    function getSubstancesForms() {
+    function getSubstancesForms(callback) {
         return $http.get(baseApi + "/api/substances/").then(
             function successCallback(response) {
-
+                callback(response.data);
             }, function errorCallback() {
 
             });
