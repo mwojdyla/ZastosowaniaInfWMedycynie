@@ -66,6 +66,7 @@ class User(models.Model):
 
 class Substance(models.Model):
     name = models.CharField(max_length=128,
+                            unique=True,
                             help_text='')
 
 
@@ -77,7 +78,7 @@ class MedicineForm(models.Model):
         ('AEROSOL', 'aerosol'),
         ('CORE', 'core')
     )
-    form = models.CharField(max_length=2,
+    form = models.CharField(max_length=15,
                             choices=TYPE_CHOICES,
                             help_text='')
 
@@ -99,29 +100,38 @@ class PackageQuantity(models.Model):
     kind = models.CharField(max_length=32)
 
 
+class Warehouse(models.Model):
+    pass
+
+
 class Medicine(models.Model):
     name = models.CharField(max_length=64,
                             help_text='Name of the medicine.')
     producer = models.CharField(max_length=64,
                                 help_text='')
-    validityPeriod = models.DateField(help_text='The term of validity of mentioned medicine.')
     withPrescription = models.BooleanField(default=False,
                                            help_text='')
-    composition = models.ManyToManyField(Substance,
-                                         help_text='')
     substitutes = models.ManyToManyField('self',
+                                         blank=True,
+                                         help_text='Many-to-many field')
+    composition = models.ManyToManyField(Substance,
+                                         help_text='Many-to-many field')
+    application = models.ManyToManyField(MedicineApplication,
                                          help_text='')
+    warehouse = models.ForeignKey(Warehouse)
+
+
+class Properties(models.Model):
+    validityPeriod = models.DateField(help_text='The term of validity of mentioned medicine.')
     imagePath = models.CharField(max_length=256,
                                  help_text='')
     price = models.FloatField(help_text='')
-    quantityInWarehouse = models.IntegerField(help_text='')
     quantityInPackage = models.ForeignKey(PackageQuantity)
     form = models.ForeignKey(MedicineForm,
                              help_text='')
-    application = models.ManyToManyField(MedicineApplication,
-                                         help_text='')
     use = models.TextField(max_length=264,
                            help_text='')
+    medicine = models.ForeignKey(Medicine)
 
 
 class Order(models.Model):

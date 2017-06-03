@@ -9,12 +9,22 @@ class UserSerializer(serializers.ModelSerializer):
                   'birthDate', 'isPharmacist', 'grantor', 'givingRightsDate')
 
 
-class MedicineSerializer(serializers.ModelSerializer):
+class PackageQuantitySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Medicine
-        fields = ('id', 'name', 'producer', 'validityPeriod', 'withPrescription', 'composition', 'substitutes',
-                  'imagePath', 'price', 'quantityInWarehouse', 'quantityInPackage', 'form', 'application', 'use')
-        depth = 2
+        model = PackageQuantity
+        fields = ('id', 'amount', 'kind')
+
+
+class WarehouseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Warehouse
+        fields = ('id',)
+
+
+class PropertiesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Properties
+        fields = ('id', 'validityPeriod', 'imagePath', 'price', 'quantityInPackage', 'form', 'use', 'medicine')
 
 
 class SubstanceSerializer(serializers.ModelSerializer):
@@ -39,3 +49,20 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ('id', 'date', 'purchaser', 'address', 'medicines')
+
+
+class MedicineSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Medicine
+        fields = ('id', 'name', 'producer', 'withPrescription', 'composition', 'substitutes',
+                  'application', 'warehouse')
+
+
+class MedicineRetrieveSerializer(serializers.ModelSerializer):
+    composition = SubstanceSerializer(many=True, read_only=True)
+    application = MedicineApplicationSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Medicine
+        fields = ('id', 'name', 'producer', 'withPrescription', 'composition', 'substitutes',
+                  'application', 'warehouse')
