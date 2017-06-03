@@ -58,6 +58,8 @@
                     dataService.logout(success);
 
                     function success() {
+                        commonInformationsService.removeWholeCart();
+                        commonInformationsService.removeWholeOrder();
                         commonInformationsService.setUser({});
                         $scope.rightTabs.PROFIL.disable = true;
                         $scope.rightTabs.AUTHENTICATE.disable = false;

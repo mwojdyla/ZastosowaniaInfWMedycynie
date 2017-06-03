@@ -28,11 +28,24 @@
     color: #2971a8;
 }
 
-.cart-tab .assume .cart-button {
+.cart-tab .assume .confirm-button {
+    background-color: #2971a8;
+    color: #fff;
+    margin-top:20px;
+}
+
+.cart-tab .assume .delivery-button {
     background-color: #e91c28;
     color: #fff;
     margin-top:20px;
 }
+
+.cart-tab .assume .cart-button {
+    background-color: #f0ad4e;
+    color: #fff;
+    margin-top:20px;
+}
+
 
 .cart-tab .assume .center {
     text-align: center;
