@@ -4,30 +4,34 @@
             <thead>
             <tr>
                 <th>Nazwa</th>
-                <th>J.m.</th>
                 <th>Cena brutto</th>
                 <th>Ilość</th>
                 <th>Wartość brutto</th>
             </tr>
             </thead>
             <tbody>
-            <tr class="item">
+            <tr class="item" ng-repeat="product in products">
                 <td class="medicine-name">
-                    IBUM Forte zawiesina 200 mg/ 5 ml lek przeciwgorączkowy o smaku bananowym, 100 g
+                    {{product.medicine.producer}} - {{product.medicine.name}} - {{product.medicine.form}} - {{product.medicine.quantityInPackage}}{{product.medicine.unit}}
                 </td>
-                <td>op</td>
-                <td>15,99 PLN</td>
+                <td>{{product.medicine.price}} PLN</td>
                 <td>
-                    <input class="form-control" type="number" disabled>
+                    <input class="form-control" type="number" ng-model="product.quantity" disabled>
                 </td>
-                <td>15,99 PLN</td>
-            </tr>
-            <tr class="cart-sum">
-                <td class="align-right" colspan="4"><b>Razem:</b></td>
-                <td class="align-right"><b>15,99 PLN</b></td>
+                <td>{{product.medicine.price * product.quantity}} PLN</td>
             </tr>
             <tr>
-                <td colspan="5"><b></b></td>
+                <td class="medicine-name">Transport - {{order.provider}}</td>
+                <td></td>
+                <td></td>
+                <td>{{order.priceTransport}} PLN</td>
+            </tr>
+            <tr class="cart-sum">
+                <td class="align-right" colspan="3"><b>Razem:</b></td>
+                <td class="align-right"><b>{{wholeValueCart}} PLN</b></td>
+            </tr>
+            <tr>
+                <td colspan="4"><b></b></td>
             </tr>
             </tbody>
         </table>
@@ -37,29 +41,44 @@
             <div class="header">Dane zamawiającego</div>
             <div class="content">
                 <div class="item">
-                    Sławomir Żaba
+                    {{user.firstName}} {{user.lastName}}
                 </div>
                 <div class="item">
-                    Email: slawekzaba@poczta.fm
+                    Email: {{user.email}}
                 </div>
                 <div class="item">
-                    Telefon: 666022811
+                    Telefon: {{order.client.phoneNumber}}
                 </div>
             </div>
         </div>
         <div class="transport col-xs-6">
             <div class="header">Transport</div>
-            <div class="content">
+            <div class="content" ng-if="order.providerValue === 'pharmacy'">
                 <div class="item">
-                    42-242, Rędziny
+                    {{order.provider}}
+                </div>
+            </div>
+            <div class="content" ng-if="order.providerValue !== 'pharmacy' && order.isAnotherAddress">
+                <div class="item">
+                    {{order.anotherAddress.zipCode}}, {{order.anotherAddress.locality}}
                 </div>
                 <div class="item">
-                    Wolności 190
+                    {{order.anotherAddress.address}}
+                </div>
+            </div>
+            <div class="content" ng-if="order.providerValue !== 'pharmacy' && !order.isAnotherAddress">
+                <div class="item">
+                    {{user.zipCode}}, {{user.locality}}
+                </div>
+                <div class="item">
+                    {{user.address}}
                 </div>
             </div>
         </div>
-        <div class="center">
-            <button class="button btn cart-button">Potwierdź zamówienie</button>
+        <div class="col-sm-12">
+            <button class="button btn cart-button col-sm-3" ng-click="backToProducts()">Wróć do koszyka</button>
+            <button class="button btn delivery-button col-sm-3 col-sm-offset-1" ng-click="backToDelivery()">Wróć do szczegułów dostawy</button>
+            <button class="button btn confirm-button col-sm-3 col-sm-offset-1">Potwierdź zamówienie</button>
         </div>
     </div>
 </div>

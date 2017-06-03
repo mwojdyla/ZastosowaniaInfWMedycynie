@@ -20,7 +20,7 @@
               $scope.updatePermissions = function() {
                 var payload = $scope.updatedUsers;
                 dataService.updateUsersPermissions(payload);
-              }
+              };
 
               $scope.filterUser = function(user) {
                 if (!$scope.wantedUser || (user.firstName.toLowerCase().indexOf($scope.wantedUser) != -1)
@@ -40,7 +40,7 @@
                 } else {
                   $scope.updatedUsers.push(userId);
                 }
-              }
+              };
 
               dataService.getAllUsers(initUsersData);
             }

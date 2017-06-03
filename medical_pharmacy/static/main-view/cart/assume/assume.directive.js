@@ -5,13 +5,27 @@
         .directive('assume', function () {
             return {
                 restrict: 'E',
-                scope: {},
+                scope: {
+                    backToDelivery: '=',
+                    backToProducts: '='
+                },
                 templateUrl: 'static/main-view/cart/assume/assume.html',
-                controller: ['$scope', Controller]
+                controller: ['$scope', 'commonInformationsService', Controller]
             };
 
-            function Controller($scope) {
+            function Controller($scope, commonInformationsService) {
+                $scope.products = commonInformationsService.getCart();
+                $scope.order = commonInformationsService.getOrderDetails();
+                $scope.user = commonInformationsService.getUser();
+                calculateWholeCost();
 
+                function calculateWholeCost() {
+                    $scope.wholeValueCart = 0;
+                    $scope.products.forEach(function(value) {
+                       $scope.wholeValueCart += Number(value.quantity) * Number(value.medicine.price);
+                    });
+                    $scope.wholeValueCart += Number($scope.order.priceTransport);
+                }
             }
         });
 
