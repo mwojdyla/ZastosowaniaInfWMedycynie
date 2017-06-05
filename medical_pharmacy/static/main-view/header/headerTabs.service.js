@@ -11,6 +11,7 @@
                 disable: false,
                 title: 'Koszyk',
                 dropdown: false,
+                isNotify: false,
                 route: buildUrl.createURLWithSlash(urlConstants.SHOPING_CART)
             },
             AUTHENTICATE: {
@@ -58,6 +59,7 @@
             ADMIN: {
                 name: 'admin',
                 title: 'Panel administratora',
+                disable: false,
                 dropdown: true,
                 items: [
                     {
