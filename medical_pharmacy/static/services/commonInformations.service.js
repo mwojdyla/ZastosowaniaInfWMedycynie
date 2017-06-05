@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('app')
-        .service('commonInformationsService', [commonInformationsService]);
+        .service('commonInformationsService', ['eventsService', 'typeEvents', commonInformationsService]);
 
-    function commonInformationsService() {
+    function commonInformationsService(eventsService, typeEvents) {
         var user, orderDetails, cart;
         orderDetails = {
             priceTransport: '',
@@ -69,8 +69,9 @@
                 medicine: medicine,
                 quantity: howMany
             };
-
             cart.push(element);
+            removeWholeOrder();
+            eventsService.notify(typeEvents.CART_CHANGED);
         }
 
         function getCart() {
@@ -79,6 +80,7 @@
 
         function removeWholeCart() {
             cart = [];
+            eventsService.notify(typeEvents.CART_CHANGED);
         }
 
         function removeFromCart(medicineId) {
@@ -86,7 +88,10 @@
                 return value.medicine.id === medicineId;
             });
 
-            if (index !== -1) cart.splice(index, 1);
+            if (index !== -1) {
+                cart.splice(index, 1);
+                eventsService.notify(typeEvents.CART_CHANGED);
+            }
         }
 
         function setUser(newUser) {
