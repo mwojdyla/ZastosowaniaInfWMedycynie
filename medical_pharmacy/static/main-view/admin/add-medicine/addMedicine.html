@@ -70,14 +70,14 @@
                             ng-class="{'error-input': !isValid('application', medicine.application)}">
             <label>Zastosowanie</label>
             <md-select ng-model="medicine.application" multiple>
-                <md-option ng-repeat="app in applicationTypes" ng-value="app.value">{{app.text}}</md-option>
+                <md-option ng-repeat="app in applicationTypes" ng-value="app.id">{{app.application}}</md-option>
             </md-select>
         </md-input-container>
         <md-input-container class="multi-select col-sm-5 col-sm-offset-2"
                             ng-class="{'error-input': !isValid('form', medicine.form)}">
             <label>Forma aplikacji</label>
             <md-select ng-model="medicine.form">
-                <md-option ng-repeat="form in formTypes" ng-value="form.value">{{form.text}}</md-option>
+                <md-option ng-repeat="form in formTypes" ng-value="form.id">{{form.form}}</md-option>
             </md-select>
         </md-input-container>
 

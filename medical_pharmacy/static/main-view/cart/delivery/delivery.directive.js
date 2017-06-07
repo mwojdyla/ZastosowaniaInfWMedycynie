@@ -19,7 +19,9 @@
                 $scope.user = commonInformationsService.getUser();
                 var order = commonInformationsService.getOrderDetails();
                 $scope.order = order;
-                if ($scope.order.client.phoneNumber === '' && $scope.user.phoneNumber !== '') $scope.order.client.phoneNumber = $scope.user.phoneNumber;
+                if ($scope.order.client.phoneNumber === '' &&
+                    ($scope.user && $scope.user.phoneNumber && $scope.user.phoneNumber !== ''))
+                    $scope.order.client.phoneNumber = $scope.user.phoneNumber;
                 $scope.isUserLogged = isUserLogin();
                 $scope.goToLogin = goToLogin;
                 $scope.isSubmitEnable = isSubmitEnable;
