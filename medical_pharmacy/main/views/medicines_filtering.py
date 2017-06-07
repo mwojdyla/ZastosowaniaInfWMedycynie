@@ -3,10 +3,11 @@ import json
 from django.http import JsonResponse
 from django.views.generic.base import TemplateView
 from ..models import Medicine
-from api.serializers import MedicineSerializer
+from api.serializers import MedicineRetrieveSerializer
 
 class MedicineFilter(TemplateView):
     def post(self, request):
+        print request.body
         filters = json.loads(request.body)
 
         name                = filters['name']
@@ -44,5 +45,5 @@ class MedicineFilter(TemplateView):
         elif withoutPrescription == True and withPrescription == False:
             medicines = medicines.filter(withPrescription=False)
 
-        serialized_data = [MedicineSerializer(obj).data for obj in medicines]
+        serialized_data = [MedicineRetrieveSerializer(obj).data for obj in medicines]
         return JsonResponse(serialized_data, status=200, safe=False)
