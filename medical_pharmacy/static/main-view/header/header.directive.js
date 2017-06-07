@@ -25,28 +25,40 @@
                                 dataService,
                                 eventsService,
                                 typeEvents) {
-                eventsService.subscribe($scope, typeEvents.DISABLE_AUTHENTICATION, disableAuthenticate);
 
-                function disableAuthenticate() {
-                    $scope.rightTabs.AUTHENTICATE.disable = true;
-                    $scope.rightTabs.PROFIL.disable = false;
-                    $scope.rightTabs.PROFIL.items[0].title = commonInformationsService.getUser().email;
-                }
-
-                function enableAuthrnticate() {
-                    $scope.rightTabs.PROFIL.disable = true;
-                    $scope.rightTabs.AUTHENTICATE.disable = false;
-                }
                 $scope.leftTabs = headerTabsService.leftTabs;
                 $scope.rightTabs = headerTabsService.rightTabs;
                 $scope.logoutUser = logoutUser;
                 $scope.isActiveItem = isActiveItem;
                 $scope.changeTab = changeTab;
+
+                eventsService.subscribe($scope, typeEvents.DISABLE_AUTHENTICATION, disableAuthenticate);
+                eventsService.subscribe($scope, typeEvents.CART_CHANGED, updateNoteAboutCart);
+
+                function updateNoteAboutCart() {
+                    var numberMedicinesInCart = commonInformationsService.getCart().length;
+
+                    $scope.rightTabs.CART.isNotify = (numberMedicinesInCart > 0);
+                }
+
+                function disableAuthenticate() {
+                    $scope.rightTabs.AUTHENTICATE.disable = true;
+                    $scope.rightTabs.PROFIL.disable = false;
+                    $scope.rightTabs.PROFIL.items[0].title = commonInformationsService.getUser().email;
+                    $scope.leftTabs.ADMIN.disable = !commonInformationsService.getUser().isPharmacist;
+                }
+
+                function enableAuthenticate() {
+                    $scope.rightTabs.PROFIL.disable = true;
+                    $scope.rightTabs.AUTHENTICATE.disable = false;
+                    $scope.leftTabs.ADMIN.disable = true;
+                }
+
                 const MAIN_URL = $scope.leftTabs.SHOP.route;
                 var activePage = null;
                 var activeParent = null;
                 if (!commonInformationsService.getUser()) {
-                    enableAuthrnticate();
+                    enableAuthenticate();
                 } else {
                     disableAuthenticate();
                 }
@@ -58,6 +70,8 @@
                     dataService.logout(success);
 
                     function success() {
+                        commonInformationsService.removeWholeCart();
+                        commonInformationsService.removeWholeOrder();
                         commonInformationsService.setUser({});
                         $scope.rightTabs.PROFIL.disable = true;
                         $scope.rightTabs.AUTHENTICATE.disable = false;

@@ -59,7 +59,8 @@
                 <li ng-repeat-end
                     ng-class="{'active' : isActiveItem(tab)}"
                     ng-if="!tab.dropdown && !tab.disable">
-                    <a ng-if="tab.route" ng-click="changeTab(tab)"> {[{tab.title}]} </a>
+                    <a ng-if="tab.route" ng-click="changeTab(tab)"> {[{tab.title}]}
+                        <div ng-if="tab.isNotify" class="circle">!</div></a>
                     <a ng-if="tab.href" ng-href="{[{tab.href}]}"> {[{tab.title}]} </a>
                 </li>
             </ul>
