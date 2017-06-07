@@ -44,7 +44,7 @@ function dataService($q, $http) {
     }
 
     function updateUsersPermissions(payload) {
-        return $http.post(baseApi + "/api/users/updateUsersPermissions", payload).then(
+        return $http.post(baseApi + "/users/updateUsersPermissions", payload).then(
             function successCallback() {
                 successMessage("Prawa użytkowników zostały zmienione.");
             }, function errorCallback() {
