@@ -57,7 +57,7 @@
                             ng-class="{'error-input': !isValid('substitutes', medicine.substitutes)}">
             <label>Zamienniki</label>
             <md-select ng-model="medicine.substitutes" multiple>
-                <md-option ng-repeat="substitute in substittutes" ng-value="substitute">substitute</md-option>
+                <md-option ng-repeat="substitute in substitutes" ng-value="substitute">{{substitute}}</md-option>
             </md-select>
         </md-input-container>
 
