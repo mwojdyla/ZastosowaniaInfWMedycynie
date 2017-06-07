@@ -11,9 +11,9 @@
                         <div class="order">
                             <div class="form-group">
                                 <label>Ilość:</label>
-                                <input type="number" class="form-control">
+                                <input type="number" ng-model="amount" class="form-control">
                             </div>
-                            <button class="add-to-cart">Koszyk</button>
+                            <button class="add-to-cart" ng-click="addToCart(medicine)">Koszyk</button>
                         </div>
                     </div>
                     <div class="base-info col-sm-4">

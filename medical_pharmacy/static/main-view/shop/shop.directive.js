@@ -37,7 +37,7 @@
       function getMedicines() {
         var payload = {
           name: $scope.filter.medicineName,
-          producer: $scope.filter.producent,
+          producer: $scope.filter.producentName,
           forms: $scope.filter.selectedForms,
           price: $scope.filter.price,
           components: $scope.filter.selectedSubstances,
@@ -46,7 +46,7 @@
           withoutPrescription: $scope.filter.withoutPrescription
         };
 
-        //dataService.getMedicines(payload, function(data) {
+        dataService.getMedicines(payload, function(data) {
           $scope.medicines =
           [
             {
@@ -101,7 +101,7 @@
                   application: "Ból dupy"
                 }
               ],
-              producent: "Ziomeczek",
+              producer: "Ziomeczek",
               form: {
                 id: 1,
                 form: "Spray"
@@ -124,7 +124,7 @@
               use: "Prosze wlozyc to sobie gleboko w tyleczek"
             }
           ];
-    //    });
+        });
       }
     }
 
