@@ -45,13 +45,13 @@
                     $scope.rightTabs.AUTHENTICATE.disable = true;
                     $scope.rightTabs.PROFIL.disable = false;
                     $scope.rightTabs.PROFIL.items[0].title = commonInformationsService.getUser().email;
-                    //$scope.leftTabs.ADMIN.disable = !commonInformationsService.getUser().isPharmacist;
+                    $scope.leftTabs.ADMIN.disable = !commonInformationsService.getUser().isPharmacist;
                 }
 
                 function enableAuthenticate() {
                     $scope.rightTabs.PROFIL.disable = true;
                     $scope.rightTabs.AUTHENTICATE.disable = false;
-                    //$scope.leftTabs.ADMIN.disable = true;
+                    $scope.leftTabs.ADMIN.disable = true;
                 }
 
                 const MAIN_URL = $scope.leftTabs.SHOP.route;
