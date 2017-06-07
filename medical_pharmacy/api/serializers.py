@@ -21,12 +21,6 @@ class WarehouseSerializer(serializers.ModelSerializer):
         fields = ('id',)
 
 
-class PropertiesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Properties
-        fields = ('id', 'validityPeriod', 'imagePath', 'price', 'quantityInPackage', 'form', 'use', 'medicine')
-
-
 class SubstanceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Substance
@@ -55,14 +49,19 @@ class MedicineSerializer(serializers.ModelSerializer):
     class Meta:
         model = Medicine
         fields = ('id', 'name', 'producer', 'withPrescription', 'composition', 'substitutes',
-                  'application', 'warehouse')
+                  'application', 'warehouse', 'validityPeriod', 'imagePath', 'price', 'quantityInPackage',
+                  'form', 'use')
 
 
 class MedicineRetrieveSerializer(serializers.ModelSerializer):
     composition = SubstanceSerializer(many=True, read_only=True)
     application = MedicineApplicationSerializer(many=True, read_only=True)
+    substitutes = MedicineSerializer(many=True, read_only=True)
+    form = MedicineFormSerializer()
+    quantityInPackage = PackageQuantitySerializer()
 
     class Meta:
         model = Medicine
         fields = ('id', 'name', 'producer', 'withPrescription', 'composition', 'substitutes',
-                  'application', 'warehouse')
+                  'application', 'warehouse', 'validityPeriod', 'imagePath', 'price', 'quantityInPackage',
+                  'form', 'use')

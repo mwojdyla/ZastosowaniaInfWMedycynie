@@ -3,7 +3,7 @@ from django.contrib import admin
 from rest_framework.documentation import include_docs_urls
 
 from api.views import UserView, SubstanceView, MedicineView, MedicineFormView, MedicineApplicationView, \
-    OrderView, PackageQuantityView, PropertiesView, WarehouseView
+    OrderView, PackageQuantityView, WarehouseView
 
 
 urlpatterns = [
@@ -21,7 +21,7 @@ urlpatterns = [
     url('^medicine_applications/', MedicineApplicationView.MedicineApplicationListCreate.as_view()),
     url('^orders/', OrderView.OrderListCreate.as_view()),
     url('^package_quantities/', PackageQuantityView.PackageQuantityListCreate.as_view()),
-    url('^properties/', PropertiesView.PropertiesListCreate.as_view()),
+    # url('^properties/', PropertiesView.PropertiesListCreate.as_view()),
     url('^warehouses/', WarehouseView.WarehouseListCreate.as_view()),
 
     #Retrieve, Update & Destroy views
@@ -32,12 +32,12 @@ urlpatterns = [
     url('^medicine_applications/(?P<pk>[0-9]+)/$', MedicineApplicationView.MedicineApplicationUpdateDelete.as_view()),
     url('^orders/(?P<pk>[0-9]+)/$', OrderView.OrderUpdateDelete.as_view()),
     url('^package_quantities/(?P<pk>[0-9]+)/$', PackageQuantityView.PackageQuantityUpdateDelete.as_view()),
-    url('^properties/(?P<pk>[0-9]+)/$', PropertiesView.PropertiesUpdateDelete.as_view()),
+    # url('^properties/(?P<pk>[0-9]+)/$', PropertiesView.PropertiesUpdateDelete.as_view()),
     url('^warehouses/(?P<pk>[0-9]+)/$', WarehouseView.WarehouseUpdateDelete.as_view()),
 
     #Filters
 
-    url('^medicine_filter/(?P<pk>[0-9]+)/$', MedicineView.MedicineRetrieve.as_view()),
+    url('^medicine_details/(?P<pk>[0-9]+)/$', MedicineView.MedicineRetrieve.as_view()),
     # url('^medicine/(?P<pk>[0-9]+)/$', MedicineView.MedicineFilter.as_view(), name='medicine_filter'),
-    url('^users/updateUsersPermissions/$', UserView.UpdateUsersPermissions.as_view(), name='update_users_permissions'),
+
 ]

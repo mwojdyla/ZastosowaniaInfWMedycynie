@@ -11,49 +11,17 @@
             };
 
             function Controller($scope, dataService) {
-                dataService.getSubstancesForms(function(response) {
-                   $scope.substancesTypes =  response;
+                dataService.getSubstancesForms(function(substances) {
+                   $scope.substancesTypes =  substances;
                 });
-                $scope.unitTypes = ['g', 'ml'];
+                dataService.getMedicineForms(function(forms) {
+                    $scope.formTypes = forms;
+                });
+                dataService.getMedicineApplications(function(applications) {
+                    $scope.applicationTypes = applications;
+                });
+                $scope.unitTypes = ['g', 'ml', 'sztuki'];
                 $scope.minDate = new Date();
-                $scope.formTypes = [
-                    {
-                        text: 'tabletki',
-                        value: 'pill'
-                    },
-                    {
-                        text: 'maść',
-                        value: 'ointment'
-                    },
-                    {
-                        text: 'zastrzyk',
-                        value: 'injection'
-                    },
-                    {
-                        text: 'aerosol',
-                        value: 'aerosol'
-                    },
-                    {
-                        text: 'czopki',
-                        value: 'core'
-                    }];
-                $scope.applicationTypes = [
-                    {
-                        text: 'ból głowy',
-                        value: 'Headache'
-                    },
-                    {
-                        text: 'ból brzucha',
-                        value: 'Stomachache'
-                    },
-                    {
-                        text: 'ciśnienie',
-                        value: 'AntiPressure'
-                    },
-                    {
-                        text: 'alergia',
-                        value: 'allergy'
-                    }];
                 $scope.valid = {
                     name: false,
                     producer: false,

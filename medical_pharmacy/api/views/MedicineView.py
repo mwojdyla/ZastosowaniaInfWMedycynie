@@ -20,9 +20,4 @@ class MedicineRetrieve(generics.RetrieveAPIView):
     queryset = Medicine.objects.all()
     serializer_class = MedicineRetrieveSerializer
 
-# class MedicineFilter(TemplateView):
-#     def get(self, request, pk):
-#         medicine = Medicine.objects.get(id=pk)
-#
-#
-#         return JsonResponse(MedicineSerializer(medicine).data)
+

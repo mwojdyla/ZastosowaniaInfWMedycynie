@@ -71,28 +71,15 @@ class Substance(models.Model):
 
 
 class MedicineForm(models.Model):
-    TYPE_CHOICES = (
-        ('PILL', 'pill'),
-        ('OINTMENT', 'ointment'),
-        ('INJECTION', 'injection'),
-        ('AEROSOL', 'aerosol'),
-        ('CORE', 'core')
-    )
-    form = models.CharField(max_length=15,
-                            choices=TYPE_CHOICES,
-                            help_text='')
+    form = models.CharField(max_length=50,
+                            unique=True,
+                            help_text='For example: PILL, OINTMENT, INJECTION, AEROSOL')
 
 
 class MedicineApplication(models.Model):
-    APPLICATION_CHOICES = (
-        ('HEAD', 'Headache'),
-        ('STOMACH', 'Stomachache'),
-        ('ANTI_PRESSURE', 'AntiPressure'),
-        ('ALLERGY', 'allergy'),
-    )
-    application = models.CharField(max_length=15,
-                                   choices=APPLICATION_CHOICES,
-                                   help_text='')
+    application = models.CharField(max_length=50,
+                                   unique=True,
+                                   help_text='For example: HEAD, STOMACH, ALLERGY')
 
 
 class PackageQuantity(models.Model):
@@ -105,12 +92,16 @@ class Warehouse(models.Model):
 
 
 class Medicine(models.Model):
+    BOOL_CHOICES = (
+        (True, 'Yes'),
+        (False, 'No')
+    )
+
     name = models.CharField(max_length=64,
                             help_text='Name of the medicine.')
     producer = models.CharField(max_length=64,
                                 help_text='')
-    withPrescription = models.BooleanField(default=False,
-                                           help_text='')
+    withPrescription = models.BooleanField(choices=BOOL_CHOICES, help_text='')
     substitutes = models.ManyToManyField('self',
                                          blank=True,
                                          help_text='Many-to-many field')
@@ -119,9 +110,6 @@ class Medicine(models.Model):
     application = models.ManyToManyField(MedicineApplication,
                                          help_text='')
     warehouse = models.ForeignKey(Warehouse)
-
-
-class Properties(models.Model):
     validityPeriod = models.DateField(help_text='The term of validity of mentioned medicine.')
     imagePath = models.CharField(max_length=256,
                                  help_text='')
@@ -129,9 +117,7 @@ class Properties(models.Model):
     quantityInPackage = models.ForeignKey(PackageQuantity)
     form = models.ForeignKey(MedicineForm,
                              help_text='')
-    use = models.TextField(max_length=264,
-                           help_text='')
-    medicine = models.ForeignKey(Medicine)
+    use = models.TextField(max_length=264)
 
 
 class Order(models.Model):
