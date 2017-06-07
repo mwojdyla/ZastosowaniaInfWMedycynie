@@ -16,7 +16,7 @@ urlpatterns = [
     url(r'^login$', Login.as_view(), name='login'),
     url(r'^logout$', logout_view, name='logout_view'),
     url(r'^send-order-email$', SendOrderEmail.as_view(), name='send_order_email'),
-    url('^users/updateUsersPermissions/$', UpdateUsersPermissions.as_view(), name='update_users_permissions'),
+    url('^users/updateUsersPermissions$', UpdateUsersPermissions.as_view(), name='update_users_permissions'),
     url('^medicines_filtering$', MedicineFilter.as_view(), name='medicines_filtering'),
     url(r'^get_substitutes_strings$', GetSubstitutesStrings.as_view(), name='get_substitutes_strings'),
 ]
