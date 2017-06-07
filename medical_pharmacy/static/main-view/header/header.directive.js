@@ -51,7 +51,7 @@
                 function enableAuthenticate() {
                     $scope.rightTabs.PROFIL.disable = true;
                     $scope.rightTabs.AUTHENTICATE.disable = false;
-                    $scope.rightTabs.ADMIN.disable = true;
+                    $scope.leftTabs.ADMIN.disable = true;
                 }
 
                 const MAIN_URL = $scope.leftTabs.SHOP.route;
