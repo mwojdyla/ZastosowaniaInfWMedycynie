@@ -25,6 +25,11 @@ class Validator(object):
 
 
 class User(models.Model):
+    BOOL_CHOICES = (
+        (True, 'Yes'),
+        (False, 'No')
+    )
+
     firstName = models.CharField(max_length=64)
     lastName = models.CharField(max_length=64)
     email = models.EmailField(unique=True,
@@ -44,7 +49,7 @@ class User(models.Model):
     birthDate = models.DateField(help_text='Birth date of the user.')
     password = models.CharField(max_length=128,
                                 help_text='User\'s password to application in encoded form.')
-    isPharmacist = models.BooleanField(default=False)
+    isPharmacist = models.BooleanField(choices=BOOL_CHOICES)
     grantor = models.ForeignKey('self',
                                 blank=True,
                                 null=True,
