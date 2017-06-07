@@ -8,6 +8,7 @@ function dataService($q, $http) {
     const LOGOUT_URL = '/logout';
     const USERS_URL = '/api/users';
     const SEND_EMAIL_URL = '/send-order-email';
+    const SUBSTITUTES_URL = '/get_substitutes_strings';
 
     return {
         getMedicines: getMedicines,
@@ -22,8 +23,19 @@ function dataService($q, $http) {
         getAllUsers: getAllUsers,
         updateUsersPermissions: updateUsersPermissions,
         addMedicine: addMedicine,
-        sendEmailOrder: sendEmailOrder
+        sendEmailOrder: sendEmailOrder,
+        getPotentialSubstituses: getPotentialSubstituses
     };
+
+    function getPotentialSubstituses(callback) {
+        $http({
+            method: 'GET',
+            url: SUBSTITUTES_URL
+        }).then(function successCallback(response) {
+            callback(response.data);
+        }, function errorCallback() {
+        });
+    }
 
     function sendEmailOrder(objectToSend, callback) {
         $http({

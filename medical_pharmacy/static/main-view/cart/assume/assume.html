@@ -12,8 +12,9 @@
             <tbody>
             <tr class="item" ng-repeat="product in products">
                 <td class="medicine-name">
-                    {{product.medicine.producer}} - {{product.medicine.name}} - {{product.medicine.form}} -
-                    {{product.medicine.quantityInPackage}}{{product.medicine.unit}}
+                    {{product.medicine.producer}} - {{product.medicine.name}} - {{product.medicine.form.form}} -
+                    {{product.medicine.quantityInPackage.amount}}{{product.medicine.quantityInPackage.kind}}
+
                 </td>
                 <td>{{product.medicine.price}} PLN</td>
                 <td>

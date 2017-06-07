@@ -20,6 +20,9 @@
                 dataService.getMedicineApplications(function(applications) {
                     $scope.applicationTypes = applications;
                 });
+                dataService.getPotentialSubstituses(function(substitutes) {
+                    $scope.substitutes = substitutes;
+                });
                 $scope.unitTypes = ['g', 'ml', 'sztuki'];
                 $scope.minDate = new Date();
                 $scope.valid = {
