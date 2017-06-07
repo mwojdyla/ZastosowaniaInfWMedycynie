@@ -122,6 +122,7 @@
     height: 150px;
     width: 100%;
     position: relative;
+    cursor: pointer;
 }
 
 .shop-tab .medicine-item .img-wrapper > img {

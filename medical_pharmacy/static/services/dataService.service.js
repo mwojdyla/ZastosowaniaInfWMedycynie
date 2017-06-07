@@ -115,12 +115,17 @@ function dataService($q, $http) {
             function successCallback(response) {
                 callback(response.data);
             }, function errorCallback(response) {
-                console.error('GET MEDICINE ERROR')
+                console.error('GET MEDICINE DETAIL ERROR')
             });
     }
 
-    function getMedicines(query) {
-        return $http.post(baseApi + "/api/getMedicines", query);
+    function getMedicines(query, callback) {
+        return $http.post(baseApi + "/medicines_filtering", query).then(
+            function successCallback(response) {
+                callback(response.data);
+            }, function errorCallback() {
+                console.error('GET MEDICINES ERROR');
+            });
     }
 
     function getMedicineApplications(callback) {
@@ -128,17 +133,16 @@ function dataService($q, $http) {
             function successCallback(response) {
                 callback(response.data);
             }, function errorCallback() {
-
-            }
-        );
+                console.error('GET APPLICATIONS ERROR');
+            });
     }
 
     function getMedicineForms(callback) {
         return $http.get(baseApi + "/api/medicine_forms/").then(
             function successCallback(response) {
                 callback(response.data);
-            }, function errorCallback(response) {
-                console.error('GET MEDICINE ERROR')
+            }, function errorCallback() {
+                console.error('GET FORMS ERROR');
             });
     }
 
@@ -147,7 +151,7 @@ function dataService($q, $http) {
             function successCallback(response) {
                 callback(response.data);
             }, function errorCallback() {
-
+                console.error('GET SUBSTANCES ERROR');
             });
     }
 

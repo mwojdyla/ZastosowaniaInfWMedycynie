@@ -10,7 +10,7 @@
                        placeholder="Nazwa Leku"
                        id="medicineName"
                        class="form-control"
-                       ng-model="search.medicineName"/>
+                       ng-model="filter.medicineName"/>
             </div>
             <div class="form-group">
                 <input aria-label="a" type="text"
@@ -18,63 +18,54 @@
                        placeholder="Producent"
                        id="producentName"
                        class="form-control"
-                       ng-model="search.producentName"/>
+                       ng-model="filter.producentName"/>
             </div>
             <div class="form-group">
                 <div class="checkbox">
                     <label>
                         <input type="checkbox"
-                               ng-model="search.prescription">
+                               ng-model="filter.withPrescription">
                         Na Receptę
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
                         <input type="checkbox"
-                               ng-model="search.outPrescription">
+                               ng-model="filter.withoutPrescription">
                         Bez Recepty
                     </label>
                 </div>
             </div>
             <md-input-container class="multi-select">
                 <label>Składniki</label>
-                <md-select ng-model="search.selectedSubstances" multiple>
-                    <md-option ng-value="'1'">qwerty</md-option>
-                    <md-option ng-value="'2'">asdasdasdasd</md-option>
-                    <md-option ng-value="'3'">dsdfxzcv</md-option>
-                    <md-option ng-value="'4'">asdasd</md-option>
-                    <md-option ng-value="'5'">asasdad2</md-option>
-                    <md-option ng-value="'6'">asaasdase2d3</md-option>
+                <md-select ng-model="filter.selectedSubstances" multiple>
+                    <md-option ng-repeat="substance in substances"
+                               ng-value="substance.id">{{substance.name}}
+                    </md-option>
                 </md-select>
             </md-input-container>
             <md-input-container class="multi-select">
                 <label>Forma Leku</label>
-                <md-select ng-model="search.formSelected" multiple>
-                    <md-option ng-value="'1'">qwerty</md-option>
-                    <md-option ng-value="'2'">asdasdasdasd</md-option>
-                    <md-option ng-value="'3'">dsdfxzcv</md-option>
-                    <md-option ng-value="'4'">asdasd</md-option>
-                    <md-option ng-value="'5'">asasdad2</md-option>
-                    <md-option ng-value="'6'">asaasdase2d3</md-option>
+                <md-select ng-model="filter.selectedForms" multiple>
+                    <md-option ng-repeat="form in forms"
+                               ng-value="form.id">{{form.form}}
+                    </md-option>
                 </md-select>
             </md-input-container>
             <md-input-container class="multi-select">
                 <label>Zastosowanie Leku</label>
-                <md-select ng-model="search.useSelected" multiple>
-                    <md-option ng-value="'1'">qwerty</md-option>
-                    <md-option ng-value="'2'">asdasdasdasd</md-option>
-                    <md-option ng-value="'3'">dsdfxzcv</md-option>
-                    <md-option ng-value="'4'">asdasd</md-option>
-                    <md-option ng-value="'5'">asasdad2</md-option>
-                    <md-option ng-value="'6'">asaasdase2d3</md-option>
+                <md-select ng-model="filter.selectedApplications" multiple>
+                    <md-option ng-repeat="application in applications"
+                               ng-value="application.id">{{application.application}}
+                    </md-option>
                 </md-select>
             </md-input-container>
             <md-slider-container>
                 <span>Cena</span>
-                <md-slider flex min="0" max="300" ng-model="search.price" aria-label="red" id="red-slider">
+                <md-slider flex min="0" max="300" ng-model="filter.price" aria-label="red" id="red-slider">
                 </md-slider>
                 <md-input-container>
-                    <input flex type="number" ng-model="search.price" aria-label="red" aria-controls="red-slider">
+                    <input flex type="number" ng-model="filter.price" aria-label="red" aria-controls="red-slider">
                 </md-input-container>
             </md-slider-container>
         </div>
@@ -91,55 +82,16 @@
         </div>
         <div class="content">
             <div class="items">
-                <div class="medicine-item">
-                    <div class="img-wrapper">
-                        <img src="static/images/example.jpg">
+                <div class="medicine-item" ng-repeat="medicine in medicines">
+                    <div class="img-wrapper" ng-click="showMedicineDetail(medicine.id)">
+                        <img ng-src={{medicine.imagePath}}>
                     </div>
                     <div class="info">
-                        <h4>Paracetamol 250 mg czopki przeciwgorączkowe, 10 sztuk</h4>
-                        <div class="price">12,40 PLN</div>
+                        <h4 ng-click="showMedicineDetail(medicine.id)">{{medicine.name + " " + medicine.quantityInPackage.amount
+                              + " " + medicine.quantityInPackage.kind + " " + medicine.form.form }}</h4>
+                        <div class="price">{{medicine.price}} PLN</div>
                     </div>
-                    <button class="add-to-cart">Koszyk</button>
-                </div>
-                <div class="medicine-item">
-                    <div class="img-wrapper">
-                        <img src="static/images/example2.jpg">
-                    </div>
-                    <div class="info">
-                        <h4>Paracetamol 250 mg czopki przeciwgorączkowe, 10 sztuk</h4>
-                        <div class="price">12,40 PLN</div>
-                    </div>
-                    <button class="add-to-cart">Koszyk</button>
-                </div>
-                <div class="medicine-item">
-                    <div class="img-wrapper">
-                        <img src="static/images/example.jpg">
-                    </div>
-                    <div class="info">
-                        <h4>Paracetamol 250 mg czopki przeciwgorączkowe, 10 sztuk</h4>
-                        <div class="price">12,40 PLN</div>
-                    </div>
-                    <button class="add-to-cart">Koszyk</button>
-                </div>
-                <div class="medicine-item">
-                    <div class="img-wrapper">
-                        <img src="static/images/example.jpg">
-                    </div>
-                    <div class="info">
-                        <h4>Paracetamol 250 mg czopki przeciwgorączkowe, 10 sztuk</h4>
-                        <div class="price">12,40 PLN</div>
-                    </div>
-                    <button class="add-to-cart">Koszyk</button>
-                </div>
-                <div class="medicine-item">
-                    <div class="img-wrapper">
-                        <img src="static/images/example.jpg">
-                    </div>
-                    <div class="info">
-                        <h4>Paracetamol 250 mg czopki przeciwgorączkowe, 10 sztuk</h4>
-                        <div class="price">12,40 PLN</div>
-                    </div>
-                    <button class="add-to-cart">Koszyk</button>
+                    <button class="add-to-cart" ng-click="addToCart(medicine)">Koszyk</button>
                 </div>
             </div>
         </div>

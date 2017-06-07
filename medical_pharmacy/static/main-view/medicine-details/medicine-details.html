@@ -21,19 +21,19 @@
                             <span class="info-type">Cena: </span><span class="info">{{medicine.price}} zł</span>
                         </div>
                         <div class="info-row">
-                            <span class="info-type">Producent: </span><span class="info">{{medicine.producent}}</span>
+                            <span class="info-type">Producent: </span><span class="info">{{medicine.producer}}</span>
                         </div>
                         <div class="info-row">
                             <span class="info-type">Przeznaczenie: </span>
                             <span class="info">
-                            <span ng-repeat="application in medicine.applications">
-                              {{ application }}{{$last ? '' : ', '}}
+                            <span ng-repeat="appl in medicine.application">
+                              {{ appl.application }}{{$last ? '' : ', '}}
                             </span>
                           </span>
                         </div>
                         <div class="info-row">
                             <span class="info-type">Rodzaj: </span>
-                            <span class="info">{{medicine.form}}</span>
+                            <span class="info">{{medicine.form.form}}</span>
                         </div>
                         <div class="info-row">
                             <span class="info-type">Pojemność: </span>
@@ -45,7 +45,7 @@
                             <span class="info-type">Składniki: </span>
                             <span class="info">
                             <span ng-repeat="ingredient in medicine.composition">
-                              {{ ingredient }}{{$last ? '' : ', '}}
+                              {{ ingredient.name }}{{$last ? '' : ', '}}
                             </span>
                         </span>
                         </div>
