@@ -3,6 +3,7 @@
     function Controller($scope, $location, dataService, commonInformationsService, urlConstants) {
       $scope.addToCart = addToCart;
       $scope.showMedicineDetail = showMedicineDetail;
+      $scope.getMedicines = getMedicines;
       $scope.filter = {
         medicineName: "",
         producentName: "",
