@@ -49,7 +49,7 @@ class User(models.Model):
     birthDate = models.DateField(help_text='Birth date of the user.')
     password = models.CharField(max_length=128,
                                 help_text='User\'s password to application in encoded form.')
-    isPharmacist = models.BooleanField(choices=BOOL_CHOICES)
+    isPharmacist = models.BooleanField(default=False, choices=BOOL_CHOICES)
     grantor = models.ForeignKey('self',
                                 blank=True,
                                 null=True,
