@@ -7,6 +7,7 @@ function dataService($q, $http) {
     const LOGIN_URL = '/login';
     const LOGOUT_URL = '/logout';
     const USERS_URL = '/api/users';
+    const SEND_EMAIL_URL = '/send-order-email';
 
     return {
         getMedicines: getMedicines,
@@ -20,30 +21,44 @@ function dataService($q, $http) {
         getUserById: getUserById,
         getAllUsers: getAllUsers,
         updateUsersPermissions: updateUsersPermissions,
-        addMedicine: addMedicine
+        addMedicine: addMedicine,
+        sendEmailOrder: sendEmailOrder
     };
 
-    function addMedicine(medicine, callback){
+    function sendEmailOrder(objectToSend, callback) {
+        $http({
+            method: 'POST',
+            url: SEND_EMAIL_URL,
+            data: JSON.stringify(objectToSend)
+        }).then(function successCallback(response) {
+            successMessage("Zamówienie zostało zrealizowane");
+            callback();
+        }, function errorCallback(response) {
+            console.error('order ERROR')
+        });
+    }
+
+    function addMedicine(medicine, callback) {
         alert('TO DO SERWER, DODAWANIE LEKU');
         callback();
     }
 
     function updateUsersPermissions(payload) {
-      return $http.post(baseApi + "/users/updateUsersPermissions", payload).then(
-          function successCallback() {
-            successMessage("Prawa użytkowników zostały zmienione.");
-          }, function errorCallback() {
-              console.error('updateUsersPermissions ERROR');
-          });
+        return $http.post(baseApi + "/api/users/updateUsersPermissions", payload).then(
+            function successCallback() {
+                successMessage("Prawa użytkowników zostały zmienione.");
+            }, function errorCallback() {
+                console.error('updateUsersPermissions ERROR');
+            });
     }
 
     function getAllUsers(callback) {
-      return $http.get(baseApi + USERS_URL).then(
-          function successCallback(response) {
-            callback(response.data);
-          }, function errorCallback() {
-              console.error('GET USERS ERROR');
-          });
+        return $http.get(baseApi + USERS_URL).then(
+            function successCallback(response) {
+                callback(response.data);
+            }, function errorCallback() {
+                console.error('GET USERS ERROR');
+            });
     }
 
     function getUserById(id, callback) {

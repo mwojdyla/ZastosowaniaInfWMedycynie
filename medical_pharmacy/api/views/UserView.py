@@ -1,4 +1,3 @@
-import django_filters
 from rest_framework import generics
 
 from main.models import User
@@ -13,3 +12,6 @@ class UserListCreate(generics.ListCreateAPIView):
 class UserUpdateDelete(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+
+
