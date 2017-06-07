@@ -69,7 +69,17 @@
                 medicine: medicine,
                 quantity: howMany
             };
-            cart.push(element);
+
+            var existingMedicine = cart.find(function(item) {
+              return item.medicine.id === element.medicine.id;
+            });
+            if(existingMedicine !== undefined) {
+              existingMedicine.quantity += howMany;
+            }
+            else {
+              cart.push(element);
+            }
+
             removeWholeOrder();
             eventsService.notify(typeEvents.CART_CHANGED);
         }

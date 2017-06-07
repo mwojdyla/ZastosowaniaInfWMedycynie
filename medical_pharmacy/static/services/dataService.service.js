@@ -29,7 +29,7 @@ function dataService($q, $http) {
     }
 
     function updateUsersPermissions(payload) {
-      return $http.post(baseApi + "/api/users/updateUsersPermissions", payload).then(
+      return $http.post(baseApi + "/users/updateUsersPermissions", payload).then(
           function successCallback() {
             successMessage("Prawa użytkowników zostały zmienione.");
           }, function errorCallback() {
@@ -100,20 +100,35 @@ function dataService($q, $http) {
             function successCallback(response) {
                 callback(response.data);
             }, function errorCallback(response) {
-                console.error('GET MEDICINE ERROR')
+                console.error('GET MEDICINE DETAIL ERROR')
             });
     }
 
-    function getMedicines(query) {
-        return $http.post(baseApi + "/api/getMedicines", query);
+    function getMedicines(query, callback) {
+        return $http.post(baseApi + "/medicines_filtering", query).then(
+            function successCallback(response) {
+                callback(response.data);
+            }, function errorCallback() {
+                console.error('GET MEDICINES ERROR');
+            });
     }
 
-    function getMedicineApplications() {
-        return $http.get(baseApi + "/api/medicine_applications/");
+    function getMedicineApplications(callback) {
+        return $http.get(baseApi + "/api/medicine_applications/").then(
+            function successCallback(response) {
+                callback(response.data);
+            }, function errorCallback() {
+                console.error('GET APPLICATIONS ERROR');
+            });
     }
 
-    function getMedicineForms() {
-        return $http.get(baseApi + "/api/medicine_forms/");
+    function getMedicineForms(callback) {
+        return $http.get(baseApi + "/api/medicine_forms/").then(
+            function successCallback(response) {
+                callback(response.data);
+            }, function errorCallback() {
+                console.error('GET FORMS ERROR');
+            });
     }
 
     function getSubstancesForms(callback) {
@@ -121,7 +136,7 @@ function dataService($q, $http) {
             function successCallback(response) {
                 callback(response.data);
             }, function errorCallback() {
-
+                console.error('GET SUBSTANCES ERROR');
             });
     }
 
