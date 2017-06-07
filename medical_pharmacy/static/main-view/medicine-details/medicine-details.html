@@ -9,11 +9,20 @@
                     <div class="photo col-sm-4">
                         <img ng-src={{medicine.imagePath}}>
                         <div class="order">
+                          <form name="toCart">
                             <div class="form-group">
                                 <label>Ilość:</label>
-                                <input type="number" ng-model="amount" class="form-control">
+                                <input type="number"
+                                  name="medicineAmount"
+                                  ng-min="1"
+                                  ng-model="amount"
+                                  ng-class="{'error-input': !toCart.medicineAmount.$valid}"
+                                  class="form-control ">
                             </div>
-                            <button class="add-to-cart" ng-click="addToCart(medicine)">Koszyk</button>
+                            <button class="add-to-cart"
+                              ng-click="addToCart(medicine)"
+                              ng-disabled="!toCart.medicineAmount.$valid">Koszyk</button>
+                          </form>
                         </div>
                     </div>
                     <div class="base-info col-sm-4">

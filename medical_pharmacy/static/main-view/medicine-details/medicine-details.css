@@ -107,6 +107,11 @@
     width: 50%;
 }
 
+.medicine-tab button.add-to-cart:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .medicine-tab button {
     display: inline-block;
     margin: 10px 0px 0px 0px;
@@ -142,6 +147,10 @@
     display:inline-block;
 }
 
+.medicine-tab .error-input {
+    border: 1px solid red;
+    border-radius: 5px;
+}
 .info-container {
     display: inline-block;
 }
