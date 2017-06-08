@@ -7,20 +7,20 @@
                 restrict: 'E',
                 scope: {},
                 templateUrl: 'static/main-view/admin/add-medicine/addMedicine.html',
-                controller: ['$scope', 'dataService', Controller]
+                controller: ['$scope', 'dataService', 'utilsService', Controller]
             };
 
-            function Controller($scope, dataService) {
-                dataService.getSubstancesForms(function(substances) {
-                   $scope.substancesTypes =  substances;
+            function Controller($scope, dataService, utilsService) {
+                dataService.getSubstancesForms(function (substances) {
+                    $scope.substancesTypes = substances;
                 });
-                dataService.getMedicineForms(function(forms) {
+                dataService.getMedicineForms(function (forms) {
                     $scope.formTypes = forms;
                 });
-                dataService.getMedicineApplications(function(applications) {
+                dataService.getMedicineApplications(function (applications) {
                     $scope.applicationTypes = applications;
                 });
-                dataService.getPotentialSubstituses(function(substitutes) {
+                dataService.getPotentialSubstituses(function (substitutes) {
                     $scope.substitutes = substitutes;
                 });
                 $scope.unitTypes = ['g', 'ml', 'sztuki'];
@@ -37,8 +37,9 @@
                     substitutes: false,
                     use: false,
                     form: false,
-                    application: false,
-                    validityPeriod: false
+                    applications: false,
+                    validityPeriod: false,
+                    quantityInWarehouse: false
                 };
                 $scope.isValid = isValid;
                 $scope.isConfirmEnable = isConfirmEnable;
@@ -54,9 +55,9 @@
                 }
 
                 function submit() {
-                    dataService.addMedicine($scope.medicine, function(){
-                        $scope.medicine = {};
-                    })
+                    var objectToSend = angular.copy($scope.medicine);
+                    objectToSend.validityPeriod = utilsService.parseDateToString(objectToSend.validityPeriod);
+                    dataService.addMedicine(objectToSend);
                 }
 
                 function isValid(field, value) {
@@ -73,6 +74,9 @@
                         case 'quantityInPackage':
                             return $scope.valid[field] = isNumber(value);
                             break;
+                        case 'quantityInWarehouse':
+                            return $scope.valid[field] = isNumber(value);
+                            break;
                         case 'unit':
                             return $scope.valid[field] = isText(value);
                             break;
@@ -82,20 +86,23 @@
                         case 'withPrescription':
                             return $scope.valid[field] = isBool(value);
                             break;
-                        case 'composition':
-                            return $scope.valid[field] = isArray(value);
+                        case 'applications':
+                            return $scope.valid[field] = isArrayNotEmpty(value);
                             break;
                         case 'substitutes':
-                            return $scope.valid[field] = isArray(value);
+                            return $scope.valid[field] = true;
                             break;
                         case 'use':
                             return $scope.valid[field] = isText(value);
                             break;
                         case 'application':
-                            return $scope.valid[field] = isArray(value);
+                            return $scope.valid[field] = isArrayNotEmpty(value);
+                            break;
+                        case 'composition':
+                            return $scope.valid[field] = isArrayNotEmpty(value);
                             break;
                         case 'form':
-                            return $scope.valid[field] = isText(value);
+                            return $scope.valid[field] = isNumber(value);
                             break;
                         case 'validityPeriod':
                             return $scope.valid[field] = isDate(value);
@@ -120,7 +127,7 @@
                     return typeof value === 'boolean';
                 }
 
-                function isArray(value) {
+                function isArrayNotEmpty(value) {
                     return Array.isArray(value) && value.length > 0;
                 }
             }

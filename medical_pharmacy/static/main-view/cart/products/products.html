@@ -20,11 +20,15 @@
             <tbody>
             <tr class="item" ng-repeat="product in products">
                 <td class="medicine-name">
-                    {{product.medicine.producer}} - {{product.medicine.name}} - {{product.medicine.form.form}} - {{product.medicine.quantityInPackage.amount}}{{product.medicine.quantityInPackage.kind}}
+                    {{product.medicine.producer}} - {{product.medicine.name}} - {{product.medicine.form.form}} -
+                    {{product.medicine.quantityInPackage}}{{product.medicine.unit}}
                 </td>
                 <td>{{product.medicine.price}} PLN</td>
                 <td>
-                    <input class="form-control" type="number" ng-model="product.quantity" ng-change="calculateCart()">
+                    <input class="form-control"
+                           type="number"
+                           ng-model="product.quantity"
+                           ng-change="calculateCart($index, product.quantity)">
                 </td>
                 <td>{{product.medicine.price * product.quantity}} PLN</td>
                 <td>
@@ -44,7 +48,8 @@
     </div>
     <div class="center">
         <button class="button btn cart-button"
-        ng-disabled="!isSubmitEnable()"
-        ng-click="onSubmit()">Przejdź do zamówienia</button>
+                ng-disabled="!isSubmitEnable()"
+                ng-click="onSubmit()">Przejdź do zamówienia
+        </button>
     </div>
 </div>

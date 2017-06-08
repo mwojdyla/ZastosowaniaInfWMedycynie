@@ -55,24 +55,9 @@ function dataService($q, $http) {
         $http({
             method: 'POST',
             url: ADD_MEDICINE_URL,
-            data: JSON.stringify({
-                name: 'asdas',
-                producer: 'asdasd123',
-                imagePath: '132343',
-                price: 20,
-                withPrescription: true,
-                quantityInWarehouse: 10,
-                quantityInPackage: 100,
-                unit: 'g',
-                components: [1],
-                applications: [1],
-                forms: 1,
-                substitutes: ['prod1 lek1'],
-                useDescription: 'asaasdasdasd',
-                warrantyDate: '2018-12-12'
-            })
+            data: JSON.stringify(medicine)
         }).then(function successCallback(response) {
-            callback(response.data[0]);
+            successMessage('Lek został dodany');
         }, function errorCallback(response) {
             console.error('REGISTER ERROR')
         });

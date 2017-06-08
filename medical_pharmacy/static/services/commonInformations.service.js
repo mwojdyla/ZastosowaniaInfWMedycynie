@@ -31,10 +31,15 @@
             removeFromCart: removeFromCart,
             removeWholeCart: removeWholeCart,
             addToCart: addToCart,
+            updateQuantityElementInCart:updateQuantityElementInCart,
             getOrderDetails: getOrderDetails,
             setOrderDetails: setOrderDetails,
             removeWholeOrder: removeWholeOrder
         };
+
+        function updateQuantityElementInCart(index, quantity) {
+            cart[index].quantity = quantity;
+        }
 
         function removeWholeOrder() {
             orderDetails = {

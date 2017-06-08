@@ -62,9 +62,9 @@
         </md-input-container>
 
         <md-input-container class="multi-select col-sm-5"
-                            ng-class="{'error-input': !isValid('application', medicine.application)}">
+                            ng-class="{'error-input': !isValid('applications', medicine.applications)}">
             <label>Zastosowanie</label>
-            <md-select ng-model="medicine.application" multiple>
+            <md-select ng-model="medicine.applications" multiple>
                 <md-option ng-repeat="app in applicationTypes" ng-value="app.id">{{app.application}}</md-option>
             </md-select>
         </md-input-container>
@@ -82,16 +82,21 @@
             <textarea ng-model="medicine.use"></textarea>
         </md-input-container>
 
-        <md-input-container class="col-sm-6"
+        <md-input-container class="col-sm-5"
                             ng-class="{'error-input': !isValid('validityPeriod', medicine.validityPeriod)}">
             <label>Data gwarancji</label>
             <md-datepicker ng-model="medicine.validityPeriod"
                            md-placeholder="MM/DD/RRRR"
                            md-min-date="minDate"></md-datepicker>
         </md-input-container>
+        <md-input-container class="col-sm-5 col-sm-offset-2"
+                            ng-class="{'error-input': !isValid('quantityInWarehouse', medicine.quantityInWarehouse)}">
+            <label>Ilość opakowań</label>
+            <input ng-model="medicine.quantityInWarehouse">
+        </md-input-container>
         <md-input-container class="col-sm-12 form-actions">
             <button class="btn btn-success"
-                    ng-disabled="isConfirmEnable();"
+                    ng-disabled="!isConfirmEnable();"
                     ng-click="submit()">Zatwierdź
             </button>
         </md-input-container>
