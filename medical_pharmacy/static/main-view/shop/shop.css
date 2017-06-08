@@ -164,6 +164,11 @@ button.add-to-cart {
     color: #fff;
 }
 
+button.add-to-cart:disabled {
+    opacity:0.5;
+    cursor:not-allowed;
+}
+
 .filters md-slider-container md-input-container input[type=number] {
     padding-left: 0;
 }
