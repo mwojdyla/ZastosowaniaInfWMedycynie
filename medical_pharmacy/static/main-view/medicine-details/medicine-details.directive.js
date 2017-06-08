@@ -18,6 +18,7 @@
           name: "Super lek",
           imagePath: "http://naukawpolsce.pap.pl/Data/Thumbs/_plugins/information/396527/MTAyNHg3Njg,14305581_14305647.jpg",
           price: 100,
+          withPrescription: true,
           application: [
             {
               id: 1,
@@ -33,7 +34,9 @@
             id: 1,
             form: "Spray"
           },
-          quantityInPackage: { amount: "500", kind: "ml"},
+          quantityInPackage: 500,
+          unit: "g",
+          quantityInWarehouse: 10,
           composition: [
             {
               id: 1,
@@ -48,7 +51,8 @@
               name: "Hasz"
             }
           ],
-          substitutes: [{name: "Hera", id: 1}, {name: "Koka", id: 2}],
+          //substitutes: [{name: "Hera", id: 1}, {name: "Koka", id: 2}],
+          substitutes: [],
           use: "Prosze wlozyc to sobie gleboko w tyleczek"
         };
 
