@@ -49,13 +49,6 @@
                 dropdown: false,
                 route: buildUrl.createURLWithSlash(urlConstants.SHOP)
             },
-            DETAILS: {
-                name: 'medicine-details',
-                disable: false,
-                title: 'Szczegóły leku',
-                dropdown: false,
-                route: buildUrl.createURLWithSlash(urlConstants.MEDICINE_DETAILS)
-            },
             ADMIN: {
                 name: 'admin',
                 title: 'Panel administratora',

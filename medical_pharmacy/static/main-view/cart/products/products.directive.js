@@ -26,7 +26,10 @@
                     calculateCart();
                 }
 
-                function calculateCart() {
+                function calculateCart(indexInCart, quantity) {
+                    if(indexInCart) {
+                        commonInformationsService.updateQuantityElementInCart(indexInCart, quantity)
+                    }
                     $scope.wholeValueCart = 0;
                     if(!$scope.products.length) {
                         cartValid = false;
