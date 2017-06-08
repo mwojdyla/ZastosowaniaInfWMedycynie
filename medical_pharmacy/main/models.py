@@ -87,15 +87,6 @@ class MedicineApplication(models.Model):
                                    help_text='For example: HEAD, STOMACH, ALLERGY')
 
 
-class PackageQuantity(models.Model):
-    amount = models.IntegerField(help_text='')
-    kind = models.CharField(max_length=32)
-
-
-class Warehouse(models.Model):
-    pass
-
-
 class Medicine(models.Model):
     BOOL_CHOICES = (
         (True, 'Yes'),
@@ -107,6 +98,15 @@ class Medicine(models.Model):
     producer = models.CharField(max_length=64,
                                 help_text='')
     withPrescription = models.BooleanField(choices=BOOL_CHOICES, help_text='')
+    validityPeriod = models.DateField(help_text='The term of validity of mentioned medicine.')
+    imagePath = models.CharField(max_length=256,
+                                 help_text='')
+    price = models.FloatField(help_text='')
+    use = models.TextField(max_length=264)
+    quantityInWarehouse = models.IntegerField()
+    quantityInPackage = models.IntegerField(help_text='')
+    unit = models.CharField(max_length=32)
+
     substitutes = models.ManyToManyField('self',
                                          blank=True,
                                          help_text='Many-to-many field')
@@ -114,15 +114,9 @@ class Medicine(models.Model):
                                          help_text='Many-to-many field')
     application = models.ManyToManyField(MedicineApplication,
                                          help_text='')
-    warehouse = models.ForeignKey(Warehouse)
-    validityPeriod = models.DateField(help_text='The term of validity of mentioned medicine.')
-    imagePath = models.CharField(max_length=256,
-                                 help_text='')
-    price = models.FloatField(help_text='')
-    quantityInPackage = models.ForeignKey(PackageQuantity)
     form = models.ForeignKey(MedicineForm,
                              help_text='')
-    use = models.TextField(max_length=264)
+
 
 
 class Order(models.Model):
