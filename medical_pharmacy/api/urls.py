@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     #List & Create views
-    url('^users/', UserView.UserListCreate.as_view()),
+    url('^users/$', UserView.UserListCreate.as_view()),
     url('^substances/', SubstanceView.SubstanceListCreate.as_view()),
     url('^medicines/', MedicineView.MedicineListCreate.as_view()),
     url('^medicine_forms/', MedicineFormView.MedicineFormListCreate.as_view()),

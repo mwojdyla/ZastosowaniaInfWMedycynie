@@ -134,7 +134,7 @@ function dataService($q, $http) {
     function getMedicineDetail(id, callback) {
         return $http.get(baseApi + "/api/medicines/" + id).then(
             function successCallback(response) {
-                callback(response.data);
+                callback(response.data[0]);
             }, function errorCallback(response) {
                 console.error('GET MEDICINE DETAIL ERROR')
             });

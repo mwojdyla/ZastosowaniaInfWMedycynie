@@ -15,13 +15,18 @@
                                 <input type="number"
                                   name="medicineAmount"
                                   ng-min="1"
+                                  ng-max="medicine.quantityInWarehouse"
                                   ng-model="amount"
                                   ng-class="{'error-input': !toCart.medicineAmount.$valid}"
                                   class="form-control ">
                             </div>
                             <button class="add-to-cart"
                               ng-click="addToCart(medicine)"
-                              ng-disabled="!toCart.medicineAmount.$valid">Koszyk</button>
+                              ng-disabled="!toCart.medicineAmount.$valid">
+                              Koszyk
+                            </button>
+                            <div ng-if="toCart.medicineAmount.$error.max">Przepraszamy, nie dysponujemy taką ilością towaru na magazynie.</div>
+                            <div ng-if="toCart.medicineAmount.$error.min">Ilość zamawianego towaru musi być większa od 0.</div>
                           </form>
                         </div>
                     </div>
@@ -31,6 +36,10 @@
                         </div>
                         <div class="info-row">
                             <span class="info-type">Producent: </span><span class="info">{{medicine.producer}}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-type">Produkt </span>
+                            <span class="info">{{ medicine.withPrescription ? "na receptę" : "bez recepty"}}</span>
                         </div>
                         <div class="info-row">
                             <span class="info-type">Przeznaczenie: </span>
@@ -46,10 +55,14 @@
                         </div>
                         <div class="info-row">
                             <span class="info-type">Pojemność: </span>
-                            <span class="info">{{medicine.quantityInPackage.amount + " " + medicine.quantityInPackage.kind}}</span>
+                            <span class="info">{{medicine.quantityInPackage + " " + medicine.unit}}</span>
                         </div>
                     </div>
                     <div class="more-info col-sm-4">
+                      <div class="info-row">
+                          <span class="info-type">Ilość dostępna w magazynie: </span>
+                          <span class="info">{{medicine.quantityInWarehouse}}</span>
+                      </div>
                         <div class="info-row">
                             <span class="info-type">Składniki: </span>
                             <span class="info">
@@ -61,11 +74,12 @@
                         <div class="info-row">
                             <span class="info-type">Zamienniki: </span>
                             <span class="info">
-                            <span ng-click="showSubstitute(substitute.id)"
-                                  ng-repeat="substitute in medicine.substitutes">
-                              {{ substitute.name }}{{$last ? '' : ', '}}
+                              <span ng-click="showSubstitute(substitute.id)"
+                                    ng-repeat="substitute in medicine.substitutes">
+                                {{ substitute.name }}{{$last ? '' : ', '}}
+                              </span>
+                            <span ng-if="medicine.substitutes.length <= 0">Brak zamienników</span>
                             </span>
-                        </span>
                         </div>
                         <div class="info-row">
                             <span class="info-type">Sposób użycia: </span>
