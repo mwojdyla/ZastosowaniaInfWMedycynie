@@ -20,26 +20,26 @@ class AddMedicine(TemplateView):
         unit = medicine_details['unit']
         components = medicine_details['components']
         application = medicine_details['applications']
-        forms = medicine_details['forms']
+        form_id = medicine_details['forms']
         substitutes_strings = medicine_details['substitutes']
         use = medicine_details['useDescription']
         date = medicine_details['warrantyDate']
 
-        composition_ids = [element for element in Substance.objects.filter(
-            name__in=components
-        )]
-        application_ids = [element for element in MedicineApplication.objects.filter(
-            application__in=application
-        )]
-        form_object = MedicineForm.objects.get(form=forms)
+        # composition_ids = [element for element in Substance.objects.filter(
+        #     name__in=components
+        # )]
+        # application_ids = [element for element in MedicineApplication.objects.filter(
+        #     application__in=application
+        # )]
+        form_object = MedicineForm.objects.get(id=form_id)
 
         substitutes_ids = []
         strings_splits = [element.split(" ", 1) for element in substitutes_strings]
         for parts in strings_splits:
             for substitute in Medicine.objects.filter(name=parts[0], producer=parts[1]):
-                substitutes_ids.append(substitute)
+                substitutes_ids.append(substitute.id)
 
-        print "a tu?aslkdjalksjd"
+        print substitutes_ids
         new_medicine = Medicine(
             name=name,
             producer=producer,
@@ -51,13 +51,14 @@ class AddMedicine(TemplateView):
             quantityInWarehouse=quantityInWarehouse,
             quantityInPackage=quantityInPackage,
             unit=unit,
-            form=form_object,
-            substitutes=substitutes_ids,
-            composition=composition_ids,
-            application=application_ids
         )
-        print "przeszlo przez konstruktor"
-        new_medicine.save(commit=False)
+
+        new_medicine.form = form_object
+        new_medicine.save()
+        new_medicine.composition.add(*components)
+        new_medicine.application.add(*application)
+        new_medicine.substitutes.add(*substitutes_ids)
+
 
         for med_id in substitutes_ids:
             current_list = Medicine.objects.get(id=med_id).substitutes
@@ -69,4 +70,4 @@ class AddMedicine(TemplateView):
                 return JsonResponse({'error': 'update od medicine\'s substitutes went wrong'},
                                     status=500)
 
-            return JsonResponse({})
+        return JsonResponse({})
