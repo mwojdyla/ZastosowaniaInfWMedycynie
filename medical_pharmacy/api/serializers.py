@@ -9,16 +9,16 @@ class UserSerializer(serializers.ModelSerializer):
                   'birthDate', 'isPharmacist', 'grantor', 'givingRightsDate')
 
 
-class PackageQuantitySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PackageQuantity
-        fields = ('id', 'amount', 'kind')
+# class PackageQuantitySerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = PackageQuantity
+#         fields = ('id', 'amount', 'kind')
 
 
-class WarehouseSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Warehouse
-        fields = ('id',)
+# class WarehouseSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Warehouse
+#         fields = ('id',)
 
 
 class SubstanceSerializer(serializers.ModelSerializer):
@@ -49,8 +49,8 @@ class MedicineSerializer(serializers.ModelSerializer):
     class Meta:
         model = Medicine
         fields = ('id', 'name', 'producer', 'withPrescription', 'composition', 'substitutes',
-                  'application', 'warehouse', 'validityPeriod', 'imagePath', 'price', 'quantityInPackage',
-                  'form', 'use')
+                  'application', 'quantityInWarehouse', 'validityPeriod', 'imagePath', 'price', 'quantityInPackage',
+                  'form', 'use', 'unit')
 
 
 class MedicineRetrieveSerializer(serializers.ModelSerializer):
@@ -58,10 +58,9 @@ class MedicineRetrieveSerializer(serializers.ModelSerializer):
     application = MedicineApplicationSerializer(many=True, read_only=True)
     substitutes = MedicineSerializer(many=True, read_only=True)
     form = MedicineFormSerializer()
-    quantityInPackage = PackageQuantitySerializer()
 
     class Meta:
         model = Medicine
         fields = ('id', 'name', 'producer', 'withPrescription', 'composition', 'substitutes',
-                  'application', 'warehouse', 'validityPeriod', 'imagePath', 'price', 'quantityInPackage',
-                  'form', 'use')
+                  'application', 'quantityInWarehouse', 'validityPeriod', 'imagePath', 'price', 'quantityInPackage',
+                  'form', 'use', 'unit')

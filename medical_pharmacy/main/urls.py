@@ -9,6 +9,7 @@ from .views.send_order_email import SendOrderEmail
 from .views.update_users_permissions import UpdateUsersPermissions
 from .views.medicines_filtering import MedicineFilter
 from .views.get_substitutes_strings import GetSubstitutesStrings
+from .views.add_medicine import AddMedicine
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
@@ -19,4 +20,5 @@ urlpatterns = [
     url('^users/updateUsersPermissions$', UpdateUsersPermissions.as_view(), name='update_users_permissions'),
     url('^medicines_filtering$', MedicineFilter.as_view(), name='medicines_filtering'),
     url(r'^get_substitutes_strings$', GetSubstitutesStrings.as_view(), name='get_substitutes_strings'),
+    url(r'^add_medicine$', csrf_exempt(AddMedicine.as_view()), name='add_medicine'),
 ]
