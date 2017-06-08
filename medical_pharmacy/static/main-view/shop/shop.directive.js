@@ -4,6 +4,7 @@
       $scope.addToCart = addToCart;
       $scope.showMedicineDetail = showMedicineDetail;
       $scope.getMedicines = getMedicines;
+      $scope.isInCart = isInCart;
       $scope.filter = {
         medicineName: "",
         producentName: "",
@@ -13,7 +14,7 @@
         selectedForms: [],
         selectedApplications: [],
         price: 300
-      }
+      };
       dataService.getMedicineApplications(function(response) {
          $scope.applications =  response;
       });
@@ -33,6 +34,14 @@
 
       function showMedicineDetail(id) {
         $location.path(urlConstants.MEDICINE_DETAILS + '/' + id)
+      }
+
+      function isInCart(medicineId) {
+          var cart = commonInformationsService.getCart();
+
+          return cart.some(function(value) {
+              return medicineId === value.medicine.id;
+          });
       }
 
       function getMedicines() {

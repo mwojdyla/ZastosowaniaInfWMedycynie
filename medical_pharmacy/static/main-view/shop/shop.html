@@ -92,7 +92,8 @@
                               + " " + medicine.quantityInPackage.kind + " " + medicine.form.form }}</h4>
                         <div class="price">{{medicine.price}} PLN</div>
                     </div>
-                    <button class="add-to-cart" ng-click="addToCart(medicine)">Koszyk</button>
+                    <button class="add-to-cart" ng-click="addToCart(medicine)" ng-if="!isInCart(medicine.id)">Koszyk</button>
+                    <button class="add-to-cart" ng-if="isInCart(medicine.id)" disabled>W koszyku</button>
                 </div>
             </div>
         </div>
