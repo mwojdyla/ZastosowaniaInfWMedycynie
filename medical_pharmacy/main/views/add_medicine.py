@@ -20,7 +20,7 @@ class AddMedicine(TemplateView):
         components = medicine_details['composition']
         application = medicine_details['applications']
         form_id = medicine_details['form']
-        substitutes_strings = medicine_details['substitutes']
+        substitutes_strings = medicine_details.get('substitutes', [])
         use = medicine_details['use']
         date = medicine_details['validityPeriod']
 
