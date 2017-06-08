@@ -25,12 +25,6 @@ class AddMedicine(TemplateView):
         use = medicine_details['useDescription']
         date = medicine_details['warrantyDate']
 
-        # composition_ids = [element for element in Substance.objects.filter(
-        #     name__in=components
-        # )]
-        # application_ids = [element for element in MedicineApplication.objects.filter(
-        #     application__in=application
-        # )]
         form_object = MedicineForm.objects.get(id=form_id)
 
         substitutes_ids = []
