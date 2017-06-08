@@ -7,7 +7,6 @@ from ..models import Medicine, Substance, MedicineApplication, MedicineForm
 class AddMedicine(TemplateView):
     def post(self, request):
         medicine_details = json.loads(request.body)
-        print(medicine_details)
 
         #medicine details
         name = medicine_details['name']
@@ -18,22 +17,22 @@ class AddMedicine(TemplateView):
         quantityInWarehouse = medicine_details['quantityInWarehouse']
         quantityInPackage = medicine_details['quantityInPackage']
         unit = medicine_details['unit']
-        components = medicine_details['components']
+        components = medicine_details['composition']
         application = medicine_details['applications']
-        form_id = medicine_details['forms']
+        form_id = medicine_details['form']
         substitutes_strings = medicine_details['substitutes']
-        use = medicine_details['useDescription']
-        date = medicine_details['warrantyDate']
+        use = medicine_details['use']
+        date = medicine_details['validityPeriod']
 
         form_object = MedicineForm.objects.get(id=form_id)
 
-        substitutes_ids = []
+        substitutes = []
         strings_splits = [element.split(" ", 1) for element in substitutes_strings]
         for parts in strings_splits:
             for substitute in Medicine.objects.filter(name=parts[0], producer=parts[1]):
-                substitutes_ids.append(substitute.id)
+                substitutes.append(substitute)
 
-        print substitutes_ids
+        print substitutes
         new_medicine = Medicine(
             name=name,
             producer=producer,
@@ -51,17 +50,10 @@ class AddMedicine(TemplateView):
         new_medicine.save()
         new_medicine.composition.add(*components)
         new_medicine.application.add(*application)
-        new_medicine.substitutes.add(*substitutes_ids)
+        new_medicine.substitutes.add(*substitutes)
 
 
-        for med_id in substitutes_ids:
-            current_list = Medicine.objects.get(id=med_id).substitutes
-            current_list.append(new_medicine.id)
-            changes = Medicine.objects.filter(id=med_id).update(
-                substitutes=current_list
-            )
-            if changes == 0:
-                return JsonResponse({'error': 'update od medicine\'s substitutes went wrong'},
-                                    status=500)
+        for substitute in substitutes:
+            substitute.substitutes.add(new_medicine)
 
         return JsonResponse({})

@@ -83,13 +83,13 @@
         </div>
         <div class="content">
             <div class="items">
-                <div class="medicine-item" ng-repeat="medicine in medicines">
+                <div class="medicine-item" ng-repeat="medicine in medicines" ng-if="medicine.quantityInWarehouse > 0">
                     <div class="img-wrapper" ng-click="showMedicineDetail(medicine.id)">
                         <img ng-src={{medicine.imagePath}}>
                     </div>
                     <div class="info">
-                        <h4 ng-click="showMedicineDetail(medicine.id)">{{medicine.name + " " + medicine.quantityInPackage.amount
-                              + " " + medicine.quantityInPackage.kind + " " + medicine.form.form }}</h4>
+                        <h4 ng-click="showMedicineDetail(medicine.id)">{{medicine.producer + " " + medicine.name + " " + medicine.quantityInPackage
+                            + medicine.unit + " " + medicine.form.form }}</h4>
                         <div class="price">{{medicine.price}} PLN</div>
                     </div>
                     <button class="add-to-cart" ng-click="addToCart(medicine)" ng-if="!isInCart(medicine.id)">Koszyk</button>
