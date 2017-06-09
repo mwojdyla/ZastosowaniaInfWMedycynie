@@ -40,8 +40,12 @@ class Register(TemplateView):
                 phoneNumber=phone_number,
                 birthDate=birth_date,
                 password=password,
-                last_login=datetime.now()
+                last_login=datetime.now(),
+                isPharmacist=False
             )
+
+            if User.objects.count() == 0:
+                user.isPharmacist = True
 
             if user is not None:
                 user.save()
