@@ -23,7 +23,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="user in users | filter: filterUser" class="warning">
+                <tr ng-repeat="user in users | filter: filterUser" class="warning" ng-if="currentUser.email !== user.email">
                     <td>{{$index + 1}}</td>
                     <td>{{user.firstName}}</td>
                     <td>{{user.lastName}}</td>

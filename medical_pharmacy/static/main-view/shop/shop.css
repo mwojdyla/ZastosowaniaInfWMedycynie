@@ -159,6 +159,10 @@
     cursor: pointer;
 }
 
+.shop-tab .info{
+    height: 70px;
+}
+
 button.add-to-cart {
     background-color: #e91c28;
     color: #fff;
