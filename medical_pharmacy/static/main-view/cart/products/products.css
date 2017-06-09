@@ -36,3 +36,8 @@
 .cart-tab .products .center {
     text-align: center;
 }
+
+.cart-tab .error-input{
+    border: 1px solid red !important;
+    border-radius: 5px !important;
+}
