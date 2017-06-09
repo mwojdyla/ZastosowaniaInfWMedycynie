@@ -47,6 +47,7 @@
                     $scope.products.forEach(function(value) {
                        $scope.wholeValueCart += Number(value.quantity) * Number(value.medicine.price);
                     });
+                    $scope.wholeValueCart = $scope.wholeValueCart.toFixed(2);
                 }
 
                 function isSubmitEnable() {

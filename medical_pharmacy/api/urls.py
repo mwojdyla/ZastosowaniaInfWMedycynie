@@ -15,11 +15,11 @@ urlpatterns = [
 
     #List & Create views
     url('^users/$', UserView.UserListCreate.as_view()),
-    url('^substances/', SubstanceView.SubstanceListCreate.as_view()),
-    url('^medicines/', MedicineView.MedicineListCreate.as_view()),
-    url('^medicine_forms/', MedicineFormView.MedicineFormListCreate.as_view()),
-    url('^medicine_applications/', MedicineApplicationView.MedicineApplicationListCreate.as_view()),
-    url('^orders/', OrderView.OrderListCreate.as_view()),
+    url('^substances/$', SubstanceView.SubstanceListCreate.as_view()),
+    url('^medicines/$', MedicineView.MedicineListCreate.as_view()),
+    url('^medicine_forms/$', MedicineFormView.MedicineFormListCreate.as_view()),
+    url('^medicine_applications/$', MedicineApplicationView.MedicineApplicationListCreate.as_view()),
+    url('^orders/$', OrderView.OrderListCreate.as_view()),
     # url('^package_quantities/', PackageQuantityView.PackageQuantityListCreate.as_view()),
     # url('^warehouses/', WarehouseView.WarehouseListCreate.as_view()),
 

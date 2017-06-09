@@ -59,6 +59,7 @@
     border: 1px solid #c8c8c9;
     margin-top: 10px;
     overflow: auto;
+    font-size: 14px;
 }
 
 .medicine-tab .content .medicine .photo {
@@ -96,8 +97,9 @@
 .base-info .price .info-type,
 .base-info .info-row .info-type,
 .more-info .info-row .info-type{
-    width: 130px;
+    width: 140px;
     display: inline-block;
+    font-weight: bold;
 }
 
 .base-info .price .info {

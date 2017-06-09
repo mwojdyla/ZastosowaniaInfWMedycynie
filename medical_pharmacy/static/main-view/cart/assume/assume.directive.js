@@ -56,6 +56,7 @@
                        $scope.wholeValueCart += Number(value.quantity) * Number(value.medicine.price);
                     });
                     $scope.wholeValueCart += Number($scope.order.priceTransport);
+                    $scope.wholeValueCart = $scope.wholeValueCart.toFixed(2);
                 }
             }
         });
