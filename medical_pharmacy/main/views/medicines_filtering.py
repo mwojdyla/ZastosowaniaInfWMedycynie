@@ -7,7 +7,6 @@ from api.serializers import MedicineRetrieveSerializer
 
 class MedicineFilter(TemplateView):
     def post(self, request):
-        print request.body
         filters = json.loads(request.body)
 
         name                = filters['name']
