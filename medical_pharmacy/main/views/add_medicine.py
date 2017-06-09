@@ -2,7 +2,7 @@ import json
 
 from django.http import JsonResponse
 from django.views.generic.base import TemplateView
-from ..models import Medicine, Substance, MedicineApplication, MedicineForm
+from ..models import Medicine, MedicineForm
 
 class AddMedicine(TemplateView):
     def post(self, request):
@@ -32,7 +32,6 @@ class AddMedicine(TemplateView):
             for substitute in Medicine.objects.filter(name=parts[0], producer=parts[1]):
                 substitutes.append(substitute)
 
-        print substitutes
         new_medicine = Medicine(
             name=name,
             producer=producer,

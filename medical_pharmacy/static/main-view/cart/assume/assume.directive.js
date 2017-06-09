@@ -21,14 +21,27 @@
                 calculateWholeCost();
 
                 function submit() {
+                    var address = '';
+                    if($scope.order.providerValue === 'pharmacy') {
+                        address = $scope.order.provider
+                    } else if($scope.order.isAnotherAddress) {
+                        address = $scope.order.anotherAddress.zipCode + ' ' + $scope.order.anotherAddress.locality +
+                                ' ' + $scope.order.anotherAddress.address
+                    } else {
+                        address = $scope.user.zipCode + ' ' + $scope.user.locality + ' ' + $scope.user.address
+                    }
                     var objectToSend = {
                         email: $scope.user.email,
                         firstName: $scope.user.firstName,
                         lastName: $scope.user.lastName,
                         price: $scope.wholeValueCart,
-                        isTransfer: $scope.order.payType === 'transfer'
+                        isTransfer: $scope.order.payType === 'transfer',
+                        medicines: $scope.products,
+                        userId: $scope.user.id,
+                        address: address,
+                        document: $scope.order.document
                     };
-                    dataService.sendEmailOrder(objectToSend, success);
+                    dataService.makeOrder(objectToSend, success);
 
                     function success() {
                         commonInformationsService.removeWholeOrder();

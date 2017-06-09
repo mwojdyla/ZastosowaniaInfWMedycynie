@@ -128,6 +128,11 @@ class Order(models.Model):
                                help_text='')
     medicines = models.ManyToManyField(Medicine,
                                        help_text='')
+    price = models.FloatField(help_text='')
+    payType = models.CharField(max_length=64,
+                                help_text='')
+    document = models.CharField(max_length=64,
+                                help_text='')
 
 
 

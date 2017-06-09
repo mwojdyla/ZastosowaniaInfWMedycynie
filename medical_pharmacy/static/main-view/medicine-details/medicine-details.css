@@ -76,34 +76,32 @@
 }
 
 .medicine-tab .content .medicine .base-info {
-    float: left;
     display: inline-block;
 }
 
 .medicine-tab .content .medicine .more-info {
-    float: left;
     display: inline-block;
 }
 
-.base-info div,
-.more-info div {
+.base-info > div,
+.more-info > div {
     border-bottom: 1px solid #4bb9bc;
 }
 
 .info-row .info {
     color: #4bb9bc;
-    float: right;
     width: 50%;
 }
 
 .base-info .price .info-type,
-.base-info .info-row .info-type {
-    width: 50%;
+.base-info .info-row .info-type,
+.more-info .info-row .info-type{
+    width: 130px;
+    display: inline-block;
 }
 
 .base-info .price .info {
     color: red;
-    float: right;
     width: 50%;
 }
 
@@ -142,15 +140,12 @@
     border-radius: 5px;
 }
 
-.medicine-tab .order .form-group{
-    width:33%;
-    display:inline-block;
+.medicine-tab .order .form-group {
+    width: 33%;
+    display: inline-block;
 }
 
 .medicine-tab .error-input {
     border: 1px solid red;
     border-radius: 5px;
-}
-.info-container {
-    display: inline-block;
 }

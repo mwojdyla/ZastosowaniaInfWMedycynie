@@ -13,7 +13,7 @@
             };
 
             function Controller($scope, commonInformationsService) {
-                var cartValid = false;
+                $scope.cartValid = false;
                 $scope.products = commonInformationsService.getCart();
                 $scope.removeFromCart = removeFromCart;
                 $scope.calculateCart = calculateCart;
@@ -32,25 +32,25 @@
                     }
                     $scope.wholeValueCart = 0;
                     if(!$scope.products.length) {
-                        cartValid = false;
+                        $scope.cartValid = false;
                         return;
                     }
                     var isNotCalculate = $scope.products.some(function(value) {
-                       return value.quantity < 1;
+                       return value.quantity < 1 || value.quantity > value.medicine.quantityInWarehouse;
                     });
 
                     if(isNotCalculate) {
-                        cartValid = false;
+                        $scope.cartValid = false;
                         return;
                     }
-                    cartValid = true;
+                    $scope.cartValid = true;
                     $scope.products.forEach(function(value) {
                        $scope.wholeValueCart += Number(value.quantity) * Number(value.medicine.price);
                     });
                 }
 
                 function isSubmitEnable() {
-                    return $scope.products.length > 0 && cartValid;
+                    return $scope.products.length > 0 && $scope.cartValid;
                 }
             }
         });

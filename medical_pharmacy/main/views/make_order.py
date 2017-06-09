@@ -2,18 +2,50 @@
 import json
 from django.http import JsonResponse
 from django.views.generic.base import TemplateView
+from ..models import Medicine, User, Order
 from django.core.mail import send_mail
 
 
-class SendOrderEmail(TemplateView):
+class MakeOrder(TemplateView):
     def post(self, request):
-        print request.body
         data = json.loads(request.body)
+        userId = data['userId']
         email = data['email']
         firstName = data['firstName']
         lastName = data['lastName']
         price = data['price']
         isTransfer = data['isTransfer']
+        medicinesObjects = data['medicines']
+        address = data['address']
+        document = data['document']
+        user = User.objects.get(id=userId)
+        allMedicines = []
+        if isTransfer:
+            payType = 'Przelew'
+        else:
+            payType = 'Gotówka'
+
+        if document == 'invoice':
+            document = 'Faktura VAT'
+        else:
+            document = 'Paragon fiskalny'
+
+        for element in medicinesObjects:
+            print element
+            medicine = Medicine.objects.get(id=element['medicine']['id'])
+            medicine.quantityInPackage -= element['quantity']
+            medicine.save()
+            allMedicines.append(medicine)
+
+        order = Order(
+            document=document,
+            payType=payType,
+            price=price,
+            address=address,
+            purchaser=user
+        )
+        order.save()
+        order.medicines.add(*allMedicines)
 
         if (isTransfer):
             message = 'Witaj {0} {1}\n' \
@@ -26,7 +58,7 @@ class SendOrderEmail(TemplateView):
                       '53-151 Wrocław\n' \
                       'ul. Skłodowskiej 9\n' \
                       'kontakt: 666901257\n\n' \
-                      'Serdecznie pozdrawiamy i zachęcamy do zakupów u nas ponownie'\
+                      'Serdecznie pozdrawiamy i zachęcamy do zakupów u nas ponownie' \
                 .format(firstName, lastName, price)
         else:
             message = 'Witaj {0} {1}\n' \
@@ -37,7 +69,7 @@ class SendOrderEmail(TemplateView):
                       '53-151 Wrocław\n' \
                       'ul. Skłodowskiej 9\n' \
                       'kontakt: 666901257\n\n' \
-                      'Serdecznie pozdrawiamy i zachęcamy do zakupów u nas ponownie.'\
+                      'Serdecznie pozdrawiamy i zachęcamy do zakupów u nas ponownie.' \
                 .format(firstName, lastName, price)
 
         send_mail(
@@ -46,6 +78,5 @@ class SendOrderEmail(TemplateView):
             'naszaApteka@.com',
             [email],
             fail_silently=False,
-
         )
         return JsonResponse({});

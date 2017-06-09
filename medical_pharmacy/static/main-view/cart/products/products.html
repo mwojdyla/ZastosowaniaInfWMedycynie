@@ -13,6 +13,7 @@
                 <th>Nazwa</th>
                 <th>Cena brutto</th>
                 <th>Ilość</th>
+                <th>Na magazynie</th>
                 <th>Wartość brutto</th>
                 <th></th>
             </tr>
@@ -27,21 +28,23 @@
                 <td>
                     <input class="form-control"
                            type="number"
+                           ng-class="{'error-input': product.quantity > product.medicine.quantityInWarehouse || product.quantity < 1}"
                            ng-model="product.quantity"
                            ng-change="calculateCart($index, product.quantity)">
                 </td>
+                <td>{{product.medicine.quantityInWarehouse}}</td>
                 <td>{{product.medicine.price * product.quantity}} PLN</td>
                 <td>
                     <button type="button" class="btn" ng-click="removeFromCart(product.medicine.id)">Usuń</button>
                 </td>
             </tr>
             <tr class="cart-sum">
-                <td class="align-right" colspan="3"><b>Razem:</b></td>
+                <td class="align-right" colspan="4"><b>Razem:</b></td>
                 <td class="align-right"><b>{{wholeValueCart}} PLN</b></td>
                 <td></td>
             </tr>
             <tr>
-                <td colspan="5"><b></b></td>
+                <td colspan="6"><b></b></td>
             </tr>
             </tbody>
         </table>

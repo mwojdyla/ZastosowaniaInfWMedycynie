@@ -7,7 +7,7 @@ function dataService($q, $http) {
     const LOGIN_URL = '/login';
     const LOGOUT_URL = '/logout';
     const USERS_URL = '/api/users';
-    const SEND_EMAIL_URL = '/send-order-email';
+    const MAKE_ORDER_URL = '/make-order';
     const SUBSTITUTES_URL = '/get_substitutes_strings';
     const ADD_MEDICINE_URL = '/add_medicine';
 
@@ -24,7 +24,7 @@ function dataService($q, $http) {
         getAllUsers: getAllUsers,
         updateUsersPermissions: updateUsersPermissions,
         addMedicine: addMedicine,
-        sendEmailOrder: sendEmailOrder,
+        makeOrder: makeOrder,
         getPotentialSubstituses: getPotentialSubstituses
     };
 
@@ -38,10 +38,10 @@ function dataService($q, $http) {
         });
     }
 
-    function sendEmailOrder(objectToSend, callback) {
+    function makeOrder(objectToSend, callback) {
         $http({
             method: 'POST',
-            url: SEND_EMAIL_URL,
+            url: MAKE_ORDER_URL,
             data: JSON.stringify(objectToSend)
         }).then(function successCallback(response) {
             successMessage("Zamówienie zostało zrealizowane");
@@ -132,9 +132,9 @@ function dataService($q, $http) {
     }
 
     function getMedicineDetail(id, callback) {
-        return $http.get(baseApi + "/api/medicines/" + id).then(
+        return $http.get(baseApi + "/api/medicine_details/" + id).then(
             function successCallback(response) {
-                callback(response.data[0]);
+                callback(response.data);
             }, function errorCallback(response) {
                 console.error('GET MEDICINE DETAIL ERROR')
             });

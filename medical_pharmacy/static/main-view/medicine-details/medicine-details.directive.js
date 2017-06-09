@@ -7,6 +7,15 @@
       $scope.amount = 1;
       $scope.addToCart = addToCart;
       $scope.showSubstitute = showSubstitute;
+      $scope.isInCart = isInCart;
+
+      function isInCart(medicineId) {
+          var cart = commonInformationsService.getCart();
+
+          return cart.some(function(value) {
+              return medicineId === value.medicine.id;
+          });
+      }
 
       function addToCart(medicine) {
         commonInformationsService.addToCart(medicine, $scope.amount);
